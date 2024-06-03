@@ -1,0 +1,391 @@
+
+\documentclass[%
+pdftex,
+oneside,			% Einseitiger Druck.
+11pt,				% Schriftgroesse
+parskip=half,		% Halbe Zeile Abstand zwischen Absätzen.
+%	topmargin = 10pt,	% Abstand Seitenrand (Std:1in) zu Kopfzeile [laut log: unused]
+headheight = 12pt,	% Höhe der Kopfzeile
+%	headsep = 30pt,	% Abstand zwischen Kopfzeile und Text Body  [laut log: unused]
+headsepline,		% Linie nach Kopfzeile.
+footsepline,		% Linie vor Fusszeile.
+footheight = 16pt,	% Höhe der Fusszeile
+abstracton,		% Abstract Überschriften
+DIV=calc,		% Satzspiegel berechnen
+BCOR=8mm,		% Bindekorrektur links: 8mm
+headinclude=false,	% Kopfzeile nicht in den Satzspiegel einbeziehen
+footinclude=false,	% Fußzeile nicht in den Satzspiegel einbeziehen
+listof=totoc,		% Abbildungs-/ Tabellenverzeichnis im Inhaltsverzeichnis darstellen
+toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
+]{scrreprt}	% Koma-Script report-Klasse, fuer laengere Bachelorarbeiten alternativ auch: scrbook
+
+
+\def \titel {Use of generative AI systems to support processes, workflows, or organizations} 
+\def \arbeit {Project Report}
+\def \autor {Jasper Bremenkamp}
+\def \abschluss {M.Sc.}
+\def \studiengang {Data Science}
+\def \datumAbgabe {\today}
+\def \modul {Project: AI Excellence with Creative Prompt Techniques}
+\def \matrikelnr {92125193}
+\def \tutor {Marek Malucha}
+
+\def \seitenrand {2cm}
+
+% PDF Einstellungen
+\usepackage{hyperref}
+
+\hypersetup{ 
+    unicode = true,
+    pdftitle={\titel},
+    pdfauthor={\autor},
+    pdfsubject={\arbeit},
+    pdfcreator={pdflatex, LaTeX with KOMA-Script},
+    pdfpagemode=UseOutlines,    % Beim Oeffnen Inhaltsverzeichnis anzeigen
+    pdfdisplaydoctitle=true,    % Dokumenttitel statt Dateiname anzeigen.
+    pdflang={en},   % Sprache des Dokuments.
+    hidelinks
+}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry} % margins	% Seitenränder und Abstände
+\usepackage[activate]{microtype} %Zeilenumbruch und mehr
+\usepackage[onehalfspacing]{setspace}
+\usepackage{makeidx}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+\MakeOuterQuote{"} % Für deutsche Anführungszeichen 
+\usepackage{longtable}
+\usepackage{enumitem}	% mehr Optionen bei Aufzählungen
+\usepackage{graphicx}
+\usepackage{pdfpages}   % zum Einbinden von PDFs
+\usepackage{xcolor} 	% für HTML-Notation
+\usepackage{float}
+\usepackage{array}
+\usepackage{calc}		% zum Rechnen (Bildtabelle in Deckblatt)
+\usepackage[right]{eurosym}
+\usepackage{wrapfig}
+\usepackage{pgffor} % für automatische Kapiteldateieinbindung
+\usepackage[perpage, hang, multiple, stable]{footmisc} % Fussnoten
+\usepackage[printonlyused]{acronym} % falls gewünscht kann die Option footnote eingefügt werden, dann wird die Erklärung nicht inline sondern in einer Fußnote dargestellt
+\usepackage{listings}
+\usepackage{bookmark}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{scrhack}
+\usepackage[T1]{fontenc} %Damit Umlaute auch beim Kopieren richtig dargestellt werden
+\usepackage{caption} %für captionof
+\usepackage{graphicx}
+\usepackage{placeins}
+
+
+    %%%%%%% Neues Design %%%%%%%%%%%
+
+    \usepackage{helvet} %Arial-Ersatz
+    \renewcommand{\familydefault}{\sfdefault}
+    
+    \def\UrlFont{\rm} % Print URLs not in Typewriter Font
+
+    \usepackage{etoolbox}
+    \makeatletter
+    \patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{} %entfernt das starten einer neuen Seite bei einem neuen Chapter
+    \makeatother
+
+    %\addtolength{\footskip}{-0.7cm}% foot larger by 0,7 cm  (Raises the page number)
+    %\setlength{\parindent}{6pt} % Indent at start of paragraphs  6pt
+
+    \usepackage{titlesec} % define size for section headings
+    \titleformat{\chapter}{\normalfont\fontsize{12pt}{1.5}\bfseries}{\thechapter}{1em}{}
+    \titleformat{\section}{\normalfont\fontsize{12pt}{1.5}\bfseries}{\thesection}{1em}{}
+    \titleformat{\subsection}{\normalfont\fontsize{12pt}{1.5}\bfseries}{\thesubsection}{1em}{} 
+
+    \renewcommand{\footnotesize}{\fontsize{10pt}{1.5pt}\selectfont}
+
+    \titlespacing{\chapter}{0pt}{10pt}{10pt}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Notizen. Einsatz mit \todo{Notiz} oder \todo[inline]{Notiz}. 
+\usepackage[obeyFinal,backgroundcolor=yellow,linecolor=black]{todonotes}
+% Alle Notizen ausblenden mit der Option "final" in \documentclass[...] oder durch das auskommentieren folgender Zeile
+% \usepackage[disable]{todonotes}
+
+% Kommentarumgebung. Einsatz mit \comment{}. Alle Kommentare ausblenden mit dem Auskommentieren der folgenden und dem aktivieren der nächsten Zeile.
+\newcommand{\comment}[1]{\par {\bfseries \color{blue} #1 \par}} %Kommentar anzeigen
+
+% der neue Zitierstil ist Käse
+\global\def\VAlterZitierstil{true}
+
+\global\def\VTrueValue{true}
+
+\ifx\VAlterZitierstil\VTrueValue
+    % \usepackage[
+    %     backend=biber,     % biber muss seperat installiert werden
+    %     bibwarn=true,
+    %     bibencoding=utf8,   % wenn .bib in utf8, sonst ascii
+    %     sortlocale=de_DE,
+    %     sorting=none,
+    %     style=apa %apa instead of IEEE
+    % ]{biblatex}
+
+    \usepackage[backend=biber, style=apa, pagetracker, ibidtracker=constrict, apamaxprtauth=20 ]{biblatex}
+
+    %Enable IBAN on APA style
+    \usepackage{xpatch}
+    \xpretobibmacro{doi+url}{\printfield{isbn}}{}{}
+
+    \addbibresource{bibliographie.bib}
+\else
+    %eigentlich totaler Käse, kann nach Bewertung der Arbeit für zukünftige Arbeiten entfernt werden
+
+    % New IUBH Cite Style / Old Cite style over this block
+    % \usepackage{natbib}
+    % \setcitestyle{aysep={}} % remove comma as delimiter 
+
+    \usepackage{apacite}
+
+    %search and replace von apacite zur biblatex
+    %Search: \\citeNP<([^}]*)>\[([^}]*)\]\{([^}]+)\}
+    %Replace: \\cite[$1][$2]{$3}
+\fi
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true, 
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstdefinestyle{yaml}{
+     basicstyle=\color{blue}\footnotesize,
+     rulecolor=\color{black},
+     string=[s]{'}{'},
+     stringstyle=\color{blue},
+     comment=[l]{:},
+     commentstyle=\color{black},
+     morecomment=[l]{-}
+ }
+
+\lstset{style=mystyle}
+
+\renewcommand{\lstlistingname}{Code snippets}% 
+\renewcommand{\lstlistlistingname}{List of code snippets}%
+
+\begin{document}
+
+\pagenumbering{Roman}
+
+\begin{titlepage}
+    \begin{figure}[h]
+        \centering
+        \advance\leftskip--2cm
+        \includegraphics[width=0.50\textwidth]{assets/logo.pdf}
+        \end{figure}
+        \FloatBarrier
+        
+        \begin{Large} 
+        \begin{center}
+        \arbeit
+        \end{center}
+        \end{Large} 
+        
+        \vspace*{30mm}
+        
+        \begin{Large} 
+        \begin{center}
+        \textbf{\titel}
+        \end{center}
+        \end{Large}
+        
+        \vspace*{45mm}
+        
+        \begin{large} 
+        \begin{center}
+        \autor
+        \end{center}
+        \end{large} 
+        
+        \vspace*{-6mm}
+        
+        \begin{large} 
+        \begin{center}
+        Matriculation number: \matrikelnr
+        \end{center}
+        \end{large} 
+        
+        \vspace*{-6mm}
+        
+        \begin{large} 
+        \begin{center}
+        % ursprünglich Straße
+        \end{center}
+        \end{large} 
+        
+        \vspace*{24mm}
+        
+        \begin{large} 
+        \begin{center}
+        is done in the course \enquote{\modul} \\
+        of the degree program \abschluss { }\studiengang
+        \end{center}
+        \end{large} 
+        
+        \vspace*{10mm}
+        
+        \begin{large} 
+        \begin{center}
+        Advisor: \tutor 
+        \end{center}
+        \end{large}         
+        \vspace*{-6mm}
+        
+        \begin{large} 
+        \begin{center}
+        Delivery date: \datumAbgabe
+        \end{center}
+        \end{large} 
+\end{titlepage}
+
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+
+
+    %Evtl. noch was zum Ergebnis schreiben: ein oder zwei Sätze
+
+
+    %Teil des Ergebnisses muss hier noch stehen
+
+
+    %Draft! Durchgehen und  überarbeiten!
+    %%%%%%%%%%%%%%%%%%%%
+
+    To-Do
+%%%%%
+
+
+\end{abstract}
+
+% Inhaltsverzeichnis
+\begin{spacing}{1.1}
+    \begingroup
+    
+        % auskommentieren für Seitenzahlen unter Inhaltsverzeichnis
+        \renewcommand*{\chapterpagestyle}{empty}
+        \pagestyle{empty}
+
+        \setcounter{tocdepth}{3}
+        %für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
+        %\setcounter{tocdepth}{2}
+        
+        \tableofcontents
+        \clearpage
+    \endgroup
+\end{spacing}
+\newpage
+
+%Abbildungsverzeichnis
+\cleardoublepage 
+\listoffigures
+\clearpage
+
+\lstlistoflistings %List of listings
+\clearpage
+
+%Tabellenverzeichnis
+%\cleardoublepage
+%\listoftables
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+
+
+    What was/were the goal/goals of your AI project?
+
+    Which AI approach did you wanted to integrate?
+
+    What preparatory actions did you take beforehand?
+
+    Which generative AI methodologies and tools did you select and why?
+
+    Why did you opt for this AI approach?
+
+    % Ziel: Einleitung: ca. 20%
+    % Dafür wären eigentlich 2,5 Seiten nötig! Evtl strecken oder Bilder einbauen!
+
+    \newpage
+
+\chapter{Implementation of the AI Project} 
+
+    Project structure plan
+    \begin{itemize}
+        \item Outline and scheduling of significant dates and events you have planned
+        \item  Project resources: resource/cost planning (if applicable)
+    \end{itemize}
+
+    Project progress:
+    \begin{itemize}
+        \item How did you implement AI methodologies and tools in your project?
+        \item Which prompts did you use?
+        \item How did you develop, organize, and fine-tune your prompts?
+        \item How did you implement the usage of prompts in your project field?
+        \item What processes did you implement in your project for the integration of AI into your project area?
+        \item Actual Stakeholder, risk, or ethical analysis, if applicable
+    \end{itemize}
+
+\chapter{Achievement of objectives}
+
+    \begin{itemize}
+        \item What result were achieved?
+        \item What impacts and changes were realized and measured through the introduction/ implementation of generative AI?
+        \item Does the result of your AI integration/project correspond to you goal? If not, why not?
+        \item What conclusions can be drawn from the integration of AI during the project?
+        \item Can a sustainable structure be created to anchor the usage of generative AI?
+        \item What can be improved in the implementation of AI?
+        \item What changes and/or continuous improvements need to be implemented and how?
+    \end{itemize}
+
+\chapter{Conclusion}
+
+    \begin{itemize}
+        \item Reflection and future goals
+        \item Possible development for the used AI approach
+        \item Possible development for the used AI methodologies and tools
+        \item Ethical reflectiont.
+    \end{itemize}
+
+    % Schluss ca. 10%
+
+% 12-15 Seiten Inhalt
+% Tabellen- und Abbildungsverzeichnis einfügen
+
+% Literaturverzeichnis
+\cleardoublepage
+
+\ifx\VAlterZitierstil\VTrueValue
+    \printbibliography
+\else
+    %\bibliographystyle{iubh}
+    \bibliographystyle{apacite} %Einträge sind unsortiert
+    \bibliography{bibliographie.bib}
+\fi
+
+% To-Dos:
+% Titelfolie nochaml überprüfen:
+% wegen Übersetzung und ob das so Okay ist auf Englisch
+
+\end{document}
