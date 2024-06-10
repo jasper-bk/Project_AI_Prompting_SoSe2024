@@ -475,7 +475,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \subsection{Project Resources: Resource/Cost Planning}
 
-    Effective resource and cost planning are critical for the successful implementation of the project. The primary resources required include:
+    Effective resource and cost planning are critical for the successful implementation of the project. 
+    The primary resources required include:
 
     \begin{enumerate}
         \item \textbf{Human Resources}
@@ -534,7 +535,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \subsection{Prompts Used}
 
-    The success of the generative AI models heavily relies on well-crafted prompts. The prompts used in the project were designed to generate personalized and contextually relevant content:
+    The success of the generative AI models heavily relies on well-crafted prompts. 
+    The prompts used in the project were designed to generate personalized and contextually relevant content:
 
     \begin{itemize}
         \item \textbf{Text Prompts for GPT-4}
@@ -576,6 +578,53 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \item Documented the prompts and their intended use cases.
         \end{itemize}
     \end{enumerate}
+
+    % To-Do: Übergang zu Code Beispiel schaffen und die Nutzung von LangChain besser einleiten.
+    % Außerdem: Code auf Funktion testen!!!
+
+
+    \begin{lstlisting}[language=Python, gobble=8, caption=LangChain Example with Product Datasheet PDFs]
+        import langchain
+        from langchain.chains import LLMChain
+        from langchain.prompts import PromptTemplate
+        from langchain.document_loaders import PyPDFLoader
+        from azure.ai.openai import OpenAIClient
+        from azure.identity import DefaultAzureCredential
+        
+        # Set up Azure OpenAI client
+        azure_openai_api_key = "YOUR_AZURE_API_KEY"
+        endpoint = "https://YOUR_AZURE_OPENAI_ENDPOINT"
+        credential = DefaultAzureCredential()
+        client = OpenAIClient(endpoint=endpoint, credential=credential)
+        
+        # Load product datasheet PDF
+        pdf_path = "path/to/product_datasheet.pdf"
+        loader = PyPDFLoader(pdf_path)
+        documents = loader.load()
+        
+        # Extract text from PDF
+        product_info = ""
+        for page in documents:
+            product_info += page.page_content
+        
+        # Define prompt template
+        prompt_template = PromptTemplate(
+            template="Generate a detailed product description for the following product information:\n\n{product_info}",
+            input_variables=["product_info"]
+        )
+        
+        # Create LangChain LLMChain
+        llm_chain = LLMChain(
+            llm=client,
+            prompt=prompt_template
+        )
+        
+        # Generate product description
+        product_description = llm_chain.run({"product_info": product_info})
+        
+        print(product_description)
+    \end{lstlisting}
+        
 
     \subsection{Implementation of Prompts in the Project Field}
 
@@ -741,47 +790,29 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     %    \item Ethical reflection.
     %\end{itemize}
 
-    \section{Reflection and Future Goals}
-
     The implementation of generative AI for hyper-personalized product pages has demonstrated significant potential in enhancing user engagement and operational efficiency. 
     The project's success in automating content creation and delivering personalized experiences marks a critical step towards more intelligent and responsive digital marketing strategies. 
     Future goals include expanding the scope of personalization, integrating more data sources for richer user profiles, and continuously improving AI models to further enhance content relevance and accuracy.
-
-    \section{Possible Development for the Used AI Approach}
-
-    The AI approach employed in this project, utilizing GPT-4 and DALL-E, has proven effective in generating personalized text and visual content. Possible developments for this approach include:
-
-    \begin{itemize}
-        \item \textbf{Multimodal Integration}: Combining text and image generation capabilities in more sophisticated ways to create even more cohesive and engaging content.
-        \item \textbf{Enhanced Context Awareness}: Improving the models' ability to understand and utilize context from user interactions to generate more relevant content.
-        \item \textbf{Real-Time Personalization}: Developing capabilities for real-time adaptation of content based on immediate user feedback and actions.
-    \end{itemize}
-
-    \section{Possible Development for the Used AI Methodologies and Tools}
-
-    The methodologies and tools used in this project offer a foundation for further advancements:
-
-    \begin{itemize}
-        \item \textbf{Advanced Data Analytics}: Leveraging more advanced analytics and machine learning techniques to better understand user behavior and preferences.
-        \item \textbf{AI Model Enhancement}: Continuously training and refining AI models with more diverse and comprehensive datasets to improve performance.
-        \item \textbf{Integration with Other Technologies}: Exploring integration with other emerging technologies such as augmented reality (AR) and virtual reality (VR) to create more immersive user experiences.
-    \end{itemize}
-
-    \section{Ethical Reflection}
-
-    The integration of AI into personalized marketing raises several ethical considerations that must be carefully addressed:
-
-    \begin{itemize}
-        \item \textbf{Data Privacy}: Ensuring that user data is collected, stored, and utilized in compliance with privacy regulations and with the user's consent.
-        \item \textbf{Bias and Fairness}: Actively working to identify and mitigate any biases in AI models to ensure fair and equitable treatment of all users.
-        \item \textbf{Transparency and Accountability}: Maintaining transparency about the use of AI in content generation and being accountable for the decisions and outputs produced by AI systems.
-        \item \textbf{User Autonomy}: Preserving user autonomy by providing clear options for users to control and customize their personalized experiences.
-    \end{itemize}
-
+    
+    The AI approach employed in this project, utilizing GPT-4 and DALL-E, has proven effective in generating personalized text and visual content. 
+    Possible developments for this approach include combining text and image generation capabilities in more sophisticated ways to create even more cohesive and engaging content. 
+    Additionally, improving the models' ability to understand and utilize context from user interactions can generate more relevant content. 
+    Developing capabilities for real-time adaptation of content based on immediate user feedback and actions is also a key area for future development.
+    
+    The methodologies and tools used in this project offer a foundation for further advancements. 
+    Leveraging more advanced analytics and machine learning techniques can better understand user behavior and preferences. 
+    Continuously training and refining AI models with more diverse and comprehensive datasets will improve performance. 
+    Exploring integration with other emerging technologies such as augmented reality (AR) and virtual reality (VR) can create more immersive user experiences.
+    
+    The integration of AI into personalized marketing raises several ethical considerations that must be carefully addressed. 
+    Ensuring that user data is collected, stored, and utilized in compliance with privacy regulations and with the user's consent is paramount. 
+    Actively working to identify and mitigate any biases in AI models is essential to ensure fair and equitable treatment of all users. 
+    Maintaining transparency about the use of AI in content generation and being accountable for the decisions and outputs produced by AI systems is crucial. 
+    Preserving user autonomy by providing clear options for users to control and customize their personalized experiences is also necessary.
+    
     In conclusion, the project has successfully demonstrated the potential of generative AI in creating hyper-personalized product pages, paving the way for future developments and improvements. 
     By addressing the ethical implications and continuously refining AI methodologies and tools, the project can contribute to more engaging, efficient, and ethical digital marketing practices.
-
-
+    
     % Schluss ca. 10%
 
 % 12-15 Seiten Inhalt
