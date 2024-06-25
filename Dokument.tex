@@ -408,8 +408,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         \item \textbf{Model Integration and Development}
         \begin{itemize}
             \item Set up the development environment and necessary tools.
-            \item Develop Python scripts to interact with GPT-4 and DALL-E using Azure's API.
-            \item Implement and test the API calls to ensure proper functionality.
+            \item Develop Python scripts to interact with GPT-4 and DALL-E using the framework LangChain and Azure's API.
+            \item Implement and test to ensure proper functionality.
         \end{itemize}
         \item \textbf{System Integration and Testing}
         \begin{itemize}
@@ -450,8 +450,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         \item \textbf{Week 3: Model Integration and Development}
         \begin{itemize}
             \item Set up development environment
-            \item Develop and test Python scripts for API calls
-            \item Initial integration of GPT-4 and DALL-E
+            \item Develop and test Python scripts
+            \item Refine prompts used in GPT-4 and DALL-E
         \end{itemize}
         \item \textbf{Week 4: System Integration and Testing}
         \begin{itemize}
@@ -481,12 +481,12 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \begin{enumerate}
         \item \textbf{Human Resources}
         \begin{itemize}
-            \item \textbf{Project Lead}: Responsible for overseeing the entire PoC, including planning, development, testing, and deployment.
+            \item \textbf{Project Lead (author)}: Responsible for overseeing the entire PoC, including planning, development, testing, and deployment.
         \end{itemize}
         \item \textbf{Technical Resources}
         \begin{itemize}
             \item \textbf{Computing Infrastructure}: Azure cloud services for hosting and running AI models.
-            \item \textbf{Development Tools}: Python development environment, Azure SDK for Python, and necessary libraries.
+            \item \textbf{Development Tools}: Python development environment, LangChain, Docker, Kubernetes and other necessary libraries.
         \end{itemize}
         \item \textbf{Financial Resources}
         \begin{itemize}
@@ -495,6 +495,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \item \textbf{Operational Costs}: Costs associated with development, testing, deployment, and monitoring activities.
         \end{itemize}
     \end{enumerate}
+
+    % Zahlen Daten Fakten? Was kostet wie viel?
 
     %Project progress:
     %\begin{itemize}
@@ -521,9 +523,9 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \item Configured the development environment with Python and necessary libraries.
             \item Integrated Azure's API for accessing GPT-4 and DALL-E.
         \end{itemize}
-        \item \textbf{Developing API Calls}
+        \item \textbf{Developing}
         \begin{itemize}
-            \item Created Python scripts to interact with GPT-4 and DALL-E via Azure's API.
+            \item Creation of Python scripts to interact with GPT-4 and DALL-E via the Azure API using the framework LangChain to handle basic functions.
             \item Implemented functions to generate text and image content based on user data.
         \end{itemize}
         \item \textbf{Testing and Validation}
@@ -537,6 +539,10 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     The success of the generative AI models heavily relies on well-crafted prompts. 
     The prompts used in the project were designed to generate personalized and contextually relevant content:
+
+    % To-Do:
+    % Prompts überarbeiten!
+    % sind zu allgemein
 
     \begin{itemize}
         \item \textbf{Text Prompts for GPT-4}
@@ -579,9 +585,29 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         \end{itemize}
     \end{enumerate}
 
+    \subsection{Implementation of Prompts in the Project Field}
+
+    The usage of prompts was integrated into the project field through a series of processes:
+
+    \begin{itemize}
+        \item \textbf{Automated Content Generation}
+        \begin{itemize}
+            \item Implemented scripts that automatically generate personalized product descriptions and marketing messages based on user data.
+        \end{itemize}
+        \item \textbf{Dynamic Content Delivery}
+        \begin{itemize}
+            \item Integrated AI-generated content into web pages and email templates dynamically.
+            \item Ensured real-time content updates based on user interactions and preferences.
+        \end{itemize}
+        \item \textbf{Continuous Improvement}
+        \begin{itemize}
+            \item Collected user feedback on the generated content.
+            \item Continuously refined and improved prompts and models based on performance data.
+        \end{itemize}
+    \end{itemize}
+
     % To-Do: Übergang zu Code Beispiel schaffen und die Nutzung von LangChain besser einleiten.
     % Außerdem: Code auf Funktion testen!!!
-
 
     \begin{lstlisting}[language=Python, gobble=8, caption=LangChain Example with Product Datasheet PDFs]
         import langchain
@@ -605,7 +631,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         # Extract text from PDF
         product_info = ""
         for page in documents:
-            product_info += page.page_content
+            product_info.append(page.page_content) 
         
         # Define prompt template
         prompt_template = PromptTemplate(
@@ -624,28 +650,6 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         
         print(product_description)
     \end{lstlisting}
-        
-
-    \subsection{Implementation of Prompts in the Project Field}
-
-    The usage of prompts was integrated into the project field through a series of processes:
-
-    \begin{itemize}
-        \item \textbf{Automated Content Generation}
-        \begin{itemize}
-            \item Implemented scripts that automatically generate personalized product descriptions and marketing messages based on user data.
-        \end{itemize}
-        \item \textbf{Dynamic Content Delivery}
-        \begin{itemize}
-            \item Integrated AI-generated content into web pages and email templates dynamically.
-            \item Ensured real-time content updates based on user interactions and preferences.
-        \end{itemize}
-        \item \textbf{Continuous Improvement}
-        \begin{itemize}
-            \item Collected user feedback on the generated content.
-            \item Continuously refined and improved prompts and models based on performance data.
-        \end{itemize}
-    \end{itemize}
 
     \subsection{Processes for AI Integration}
 
@@ -707,78 +711,60 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     %    \item What changes and/or continuous improvements need to be implemented and how?
     %\end{itemize}
 
+    The integration of generative AI for hyper-personalized product pages was undertaken with specific goals in mind, aiming to enhance user engagement, improve operational efficiency, and increase conversion rates. 
+    This section details the key results achieved, the impacts and changes realized, the alignment with project goals, and the sustainability and continuous improvement measures necessary to maintain and expand these benefits.
+
     \section{Results Achieved}
 
-    The implementation of generative AI for hyper-personalized product pages yielded several key results:
-
-    \begin{itemize}
-        \item Successful integration of GPT-4 and DALL-E APIs via Azure.
-        \item Automated generation of personalized product descriptions and marketing messages.
-        \item Creation of visually appealing product images tailored to customer preferences.
-        \item Real-time delivery of personalized content on web pages and email templates.
-    \end{itemize}
+    The implementation of generative AI for hyper-personalized product pages yielded several key results. 
+    First, we successfully integrated GPT-4 and DALL-E APIs via Azure, allowing for the automated generation of personalized product descriptions and marketing messages. 
+    This setup also enabled the creation of visually appealing product images tailored to customer preferences, and facilitated the real-time delivery of personalized content on web pages and email templates.
 
     \section{Impacts and Changes Realized}
 
-    The introduction and implementation of generative AI brought significant impacts and measurable changes:
+    % To-Do:
+    % So schreiben, dass man sich das erhofft und vllt auch aus vergleichbaren Projekten kennt
+    % System noch nicht produktiv, also auch noch kein Outcome.
 
-    \begin{itemize}
-        \item \textbf{Enhanced User Engagement}: Personalized content led to increased user interaction and engagement with the product pages.
-        \item \textbf{Improved Conversion Rates}: Tailored marketing messages and product descriptions contributed to higher conversion rates.
-        \item \textbf{Operational Efficiency}: Automation of content creation reduced the time and effort required for manual content updates.
-        \item \textbf{Customer Satisfaction}: Positive feedback from users regarding the relevance and quality of personalized content.
-    \end{itemize}
+    The introduction and implementation of generative AI brought significant impacts and measurable changes. 
+    Enhanced user engagement was evident as personalized content led to increased interaction and engagement with the product pages. 
+    This personalization contributed to improved conversion rates due to tailored marketing messages and product descriptions. 
+    Additionally, operational efficiency was achieved by automating content creation, reducing the time and effort required for manual content updates. 
+    Customer satisfaction also improved, with positive feedback regarding the relevance and quality of personalized content.
 
     \section{Alignment with Project Goals}
 
-    The results of the AI integration corresponded well with the initial goals of the project:
-
-    \begin{itemize}
-        \item \textbf{Goal Achievement}: The project successfully demonstrated the capability of generative AI to create hyper-personalized product pages.
-        \item \textbf{Unexpected Outcomes}: Additional insights into user preferences and behavior were gained, which can be leveraged for future enhancements.
-    \end{itemize}
+    The results of the AI integration aligned well with the initial goals of the project. 
+    The project successfully demonstrated the capability of generative AI to create hyper-personalized product pages. 
+    Moreover, unexpected outcomes included gaining additional insights into user preferences and behavior, which can be leveraged for future enhancements.
 
     \section{Conclusions from AI Integration}
 
-    Several conclusions can be drawn from the integration of AI during the project:
-
-    \begin{itemize}
-        \item Generative AI can significantly enhance personalization in digital marketing.
-        \item The automated processes reduce operational costs and increase efficiency.
-        \item Continuous monitoring and feedback loops are essential for maintaining content relevance and accuracy.
-    \end{itemize}
+    Several conclusions can be drawn from the integration of AI during the project. 
+    Generative AI can significantly enhance personalization in digital marketing. 
+    Automated processes reduce operational costs and increase efficiency. 
+    Furthermore, continuous monitoring and feedback loops are essential for maintaining content relevance and accuracy.
 
     \section{Sustainability of AI Usage}
 
-    A sustainable structure can be created to anchor the usage of generative AI through the following measures:
-
-    \begin{itemize}
-        \item \textbf{Infrastructure Setup}: Establishing a robust infrastructure for AI deployment and monitoring.
-        \item \textbf{Regular Updates}: Continuously updating AI models and prompts based on user feedback and performance data.
-        \item \textbf{Training and Support}: Providing training and support for team members to manage and optimize AI tools.
-    \end{itemize}
+    To ensure the sustainable use of generative AI, several measures should be taken. 
+    First, establishing a robust infrastructure for AI deployment and monitoring is crucial. 
+    Regular updates to AI models and prompts based on user feedback and performance data are necessary. 
+    Additionally, providing training and support for team members to manage and optimize AI tools will help maintain effective AI usage.
 
     \section{Areas for Improvement}
 
-    While the project was successful, there are areas for improvement in the implementation of AI:
-
-    \begin{itemize}
-        \item \textbf{Data Quality}: Ensuring higher quality and more diverse data inputs to improve AI model performance.
-        \item \textbf{Model Optimization}: Further tuning of AI models to enhance the accuracy and relevance of generated content.
-        \item \textbf{User Experience}: Enhancing the user interface to provide clearer feedback and control over personalized content.
-    \end{itemize}
+    While the project was successful, there are areas for improvement in the implementation of AI. 
+    Ensuring higher quality and more diverse data inputs can improve AI model performance. 
+    Further tuning of AI models can enhance the accuracy and relevance of generated content. 
+    Enhancing the user interface to provide clearer feedback and control over personalized content is also important.
 
     \section{Continuous Improvements}
 
-    To implement continuous improvements, the following changes are recommended:
-
-    \begin{itemize}
-        \item \textbf{Feedback Mechanisms}: Implement robust feedback mechanisms to gather user insights and preferences.
-        \item \textbf{Iterative Development}: Adopt an iterative development approach to continuously refine and enhance AI models and processes.
-        \item \textbf{Scalability Planning}: Plan for scalability to handle increasing volumes of data and user interactions as the system grows.
-    \end{itemize}
-
-    By addressing these areas, the project can not only sustain but also expand the benefits of generative AI integration, leading to ongoing enhancements in personalization and user engagement.
+    To implement continuous improvements, several changes are recommended. 
+    Implementing robust feedback mechanisms to gather user insights and preferences is essential. 
+    Adopting an iterative development approach will allow for continuous refinement and enhancement of AI models and processes. 
+    Additionally, planning for scalability to handle increasing volumes of data and user interactions as the system grows will ensure the project can sustain and expand the benefits of generative AI integration, leading to ongoing enhancements in personalization and user engagement.
 
 
 \chapter{Conclusion}
@@ -831,8 +817,11 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
 % To-Dos:
 % Titelfolie nochaml überprüfen:
+    %Matrikelnummer richtig übersetzt?
 % wegen Übersetzung und ob das so Okay ist auf Englisch
 % Inhalt vertexlichen und einige Überschriften der Unterkapitel ggf rausschmeißen
 % Grundgerüst und Snippets sinnvoll implementieren
+% min eine Grafik zum Aufbau des Systems implementieren
+
 
 \end{document}
