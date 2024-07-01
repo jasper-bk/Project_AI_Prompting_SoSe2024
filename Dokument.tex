@@ -606,49 +606,76 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         \end{itemize}
     \end{itemize}
 
-    % To-Do: Übergang zu Code Beispiel schaffen und die Nutzung von LangChain besser einleiten.
-    % Außerdem: Code auf Funktion testen!!!
+    % Code auf Funktion getestet. 
+    % To-Dos:
+    % Mehr auf Use-Case abstimmen. Embeddings (Produktdatenblätter) einbauen
+    % Caption dann auch wieder um "with Product Datasheet PDFs" erweitern
 
-    \begin{lstlisting}[language=Python, gobble=8, caption=LangChain Example with Product Datasheet PDFs]
+    \begin{lstlisting}[language=Python, gobble=8, caption=LangChain Exampl]
+        import os
+        import dotenv
         import langchain
-        from langchain.chains import LLMChain
-        from langchain.prompts import PromptTemplate
-        from langchain.document_loaders import PyPDFLoader
-        from azure.ai.openai import OpenAIClient
-        from azure.identity import DefaultAzureCredential
         
-        # Set up Azure OpenAI client
-        azure_openai_api_key = "YOUR_AZURE_API_KEY"
-        endpoint = "https://YOUR_AZURE_OPENAI_ENDPOINT"
-        credential = DefaultAzureCredential()
-        client = OpenAIClient(endpoint=endpoint, credential=credential)
+        from langchain_core.prompts import ChatPromptTemplate
+        from langchain_core.output_parsers import StrOutputParser
+        from langchain_core.runnables import RunnablePassthrough
+        from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+
+        dotenv.load_dotenv()
+
+        # Langchain flags 
+        langchain.verbose = False
+        langchain.debug = False
+        langchain.llm_cache = False
+
+        class LangChainChat:
+            def __init__(self) -> None:
+                # Set up Azure OpenAI client
+                self.llm = AzureChatOpenAI(
+                openai_api_key=os.getenv('LLM_API_KEY'),
+                azure_endpoint=os.getenv('LLM_ENDPOINT'),
+                openai_api_version=os.getenv('LLM_VERSION'),
+                deployment_name=os.getenv('LLM_DEPLOYMENT_NAME')
+                )
+
+                # Parameters for the language model
+                self.llm.temperature=0.5
+                self.llm.max_tokens=100
+
+            def chat_bot(self, template: str, question : str) -> str:
+
+                prompt = ChatPromptTemplate.from_template(template)
+            
+                chain = (
+                    {
+                        "question": RunnablePassthrough()
+                    }
+                    | prompt
+                    | self.llm
+                    | StrOutputParser()
+                )
+            
+                print("Send request to the language model...")
+            
+                response = chain.invoke(question)
+            
+                print(f"Question: {question}")
+                print(f"Response: {response}")
+
+                return response
+
+        def main() -> None:
+            template : str = """
+            You are an highly personalized marketing assistant and answers questions to our product.
+
+            Question: {question}
+            """
         
-        # Load product datasheet PDF
-        pdf_path = "path/to/product_datasheet.pdf"
-        loader = PyPDFLoader(pdf_path)
-        documents = loader.load()
+            question : str = "Generate a detailed product description about ..."
         
-        # Extract text from PDF
-        product_info = ""
-        for page in documents:
-            product_info.append(page.page_content) 
-        
-        # Define prompt template
-        prompt_template = PromptTemplate(
-            template="Generate a detailed product description for the following product information:\n\n{product_info}",
-            input_variables=["product_info"]
-        )
-        
-        # Create LangChain LLMChain
-        llm_chain = LLMChain(
-            llm=client,
-            prompt=prompt_template
-        )
-        
-        # Generate product description
-        product_description = llm_chain.run({"product_info": product_info})
-        
-        print(product_description)
+            chat = LangChainChat()
+            chat.chat_bot(template, question)
+            
     \end{lstlisting}
 
     \subsection{Processes for AI Integration}
