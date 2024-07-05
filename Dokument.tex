@@ -401,326 +401,326 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \section{Project Structure}
 
-    % Klären, ob sich das noch Proof of Concept schimpfen kann, wenn es doch mehrere Wochen lang dauern soll.
-    The implementation of the first Proof of concept hyper-personalized product pages project is structured into several key phases to ensure systematic progress and effective integration of generative AI technologies. 
-    The project structure can be broken down as follows:
+        % Klären, ob sich das noch Proof of Concept schimpfen kann, wenn es doch mehrere Wochen lang dauern soll.
+        The implementation of the first Proof of concept hyper-personalized product pages project is structured into several key phases to ensure systematic progress and effective integration of generative AI technologies. 
+        The project structure can be broken down as follows:
 
-    \begin{enumerate}
-        \item \textbf{Initial Planning and Requirements Gathering}
-        \begin{itemize}
-            \item Define project goals and scope.
-            \item Conduct a detailed analysis of current marketing processes and data sources.
-        \end{itemize}
-        \item \textbf{Data Preparation}
-        \begin{itemize}
-            \item Collect and preprocess customer data required for personalization.
-            \item Ensure data quality and consistency.
-        \end{itemize}
-        \item \textbf{Model Integration and Development}
-        \begin{itemize}
-            \item Set up the development environment and necessary tools.
-            \item Develop Python scripts to interact with GPT-4 and DALL-E using the framework LangChain and Azure's API.
-            \item Implement and test to ensure proper functionality.
-        \end{itemize}
-        \item \textbf{System Integration and Testing}
-        \begin{itemize}
-            \item Integrate the generative AI models into the existing web and email systems.
-            \item Conduct comprehensive testing to ensure the accuracy and relevance of personalized content.
-        \end{itemize}
-        \item \textbf{Deployment and Monitoring}
-        \begin{itemize}
-            \item Deploy the system to a usable and close to production environment.
-            \item Implement monitoring and logging to track system performance and user engagement.
-            \item Continuously refine and improve the models based on feedback and performance data.
-        \end{itemize}
-        \item \textbf{Review and Optimization}
-        \begin{itemize}
-            \item Analyze system performance and user feedback.
-            \item Optimize the models and processes to enhance personalization and efficiency.
-            \item Document the project outcomes and lessons learned.
-        \end{itemize}
-    \end{enumerate}
+        \begin{enumerate}
+            \item \textbf{Initial Planning and Requirements Gathering}
+            \begin{itemize}
+                \item Define project goals and scope.
+                \item Conduct a detailed analysis of current marketing processes and data sources.
+            \end{itemize}
+            \item \textbf{Data Preparation}
+            \begin{itemize}
+                \item Collect and preprocess customer data required for personalization.
+                \item Ensure data quality and consistency.
+            \end{itemize}
+            \item \textbf{Model Integration and Development}
+            \begin{itemize}
+                \item Set up the development environment and necessary tools.
+                \item Develop Python scripts to interact with GPT-4 and DALL-E using the framework LangChain and Azure's API.
+                \item Implement and test to ensure proper functionality.
+            \end{itemize}
+            \item \textbf{System Integration and Testing}
+            \begin{itemize}
+                \item Integrate the generative AI models into the existing web and email systems.
+                \item Conduct comprehensive testing to ensure the accuracy and relevance of personalized content.
+            \end{itemize}
+            \item \textbf{Deployment and Monitoring}
+            \begin{itemize}
+                \item Deploy the system to a usable and close to production environment.
+                \item Implement monitoring and logging to track system performance and user engagement.
+                \item Continuously refine and improve the models based on feedback and performance data.
+            \end{itemize}
+            \item \textbf{Review and Optimization}
+            \begin{itemize}
+                \item Analyze system performance and user feedback.
+                \item Optimize the models and processes to enhance personalization and efficiency.
+                \item Document the project outcomes and lessons learned.
+            \end{itemize}
+        \end{enumerate}
 
-    \subsection{Outline and Scheduling of Significant Dates and Events}
+        \subsection{Outline and Scheduling of Significant Dates and Events}
 
-    To ensure that the project remains on schedule and deadlines are met, a simple but sufficiently detailed schedule was drawn up for the PoC nature of the project. 
-    The following Gantt chart highlights the key milestones and deliverables over the course of the project:
+            To ensure that the project remains on schedule and deadlines are met, a simple but sufficiently detailed schedule was drawn up for the PoC nature of the project. 
+            The following Gantt chart highlights the key milestones and deliverables over the course of the project:
 
-    \begin{ganttchart}[
-        hgrid,
-        vgrid,
-        x unit=3cm,
-        y unit title=1cm,
-        y unit chart=1cm,
-        title height=1,
-        title/.style={fill=none},
-        title label font=\footnotesize,
-        bar/.style={fill=blue!50},
-        bar height=0.7,
-        group right shift=0,
-        group top shift=0.7,
-        group height=.3,
-        group peaks width={0.2},
-        inline]{1}{6}
-      \gantttitle{Project Timeline}{6} \\
+            \begin{ganttchart}[
+                hgrid,
+                vgrid,
+                x unit=3cm,
+                y unit title=1cm,
+                y unit chart=1cm,
+                title height=1,
+                title/.style={fill=none},
+                title label font=\footnotesize,
+                bar/.style={fill=blue!50},
+                bar height=0.7,
+                group right shift=0,
+                group top shift=0.7,
+                group height=.3,
+                group peaks width={0.2},
+                inline]{1}{6}
+            \gantttitle{Project Timeline}{6} \\
 
-      \gantttitle{Week 1}{1}
-      \gantttitle{Week 2}{1}
-      \gantttitle{Week 3}{1}
-      \gantttitle{Week 4}{1}
-      \gantttitle{Week 5}{1}
-      \gantttitle{Week 6}{1} \\
-    
-      \ganttbar[bar inline label node/.style={anchor=west},bar inline label anchor=west]{Initial Planning and Requirements Gathering}{1}{1} \\
-      \ganttbar{Data Preparation}{2}{2} \\
-      \ganttbar{Model Integration and Development}{3}{3} \\
-      \ganttbar{System Integration and Testing}{4}{4} \\
-      \ganttbar{Deployment and Monitoring}{5}{5} \\
-      \ganttbar{Review and Optimization}{6}{6}     
-    \end{ganttchart}
-    % To-Do: Caption hinzufügen und in List of Figures aufnehmen 
+            \gantttitle{Week 1}{1}
+            \gantttitle{Week 2}{1}
+            \gantttitle{Week 3}{1}
+            \gantttitle{Week 4}{1}
+            \gantttitle{Week 5}{1}
+            \gantttitle{Week 6}{1} \\
+            
+            \ganttbar[bar inline label node/.style={anchor=west},bar inline label anchor=west]{Initial Planning and Requirements Gathering}{1}{1} \\
+            \ganttbar{Data Preparation}{2}{2} \\
+            \ganttbar{Model Integration and Development}{3}{3} \\
+            \ganttbar{System Integration and Testing}{4}{4} \\
+            \ganttbar{Deployment and Monitoring}{5}{5} \\
+            \ganttbar{Review and Optimization}{6}{6}     
+            \end{ganttchart}
+            % To-Do: Caption hinzufügen und in List of Figures aufnehmen 
 
-    One week has planned for every key phase.
-    When a phase was completed and there was still time left over, the subsequent phase was prepared or the time was used for other purposes.
-    Strict adherence to the project schedule was and is not a given, as it primarily served as a guide and draft.
+            One week has planned for every key phase.
+            When a phase was completed and there was still time left over, the subsequent phase was prepared or the time was used for other purposes.
+            Strict adherence to the project schedule was and is not a given, as it primarily served as a guide and draft.
 
-    \subsection{Project Resources: Resource/Cost Planning}
+        \subsection{Project Resources: Resource/Cost Planning}
 
-    Effective resource and cost planning are critical for the successful implementation of the project. 
-    The primary resources required include:
+            Effective resource and cost planning are critical for the successful implementation of the project. 
+            The primary resources required include:
 
-    \begin{enumerate}
-        \item \textbf{Human Resources}
-        \begin{itemize}
-            \item \textbf{Project Lead (author)}: Responsible for overseeing the entire PoC, including planning, development, testing, and deployment.
-        \end{itemize}
-        \item \textbf{Technical Resources}
-        \begin{itemize}
-            \item \textbf{Computing Infrastructure}: Azure cloud services for hosting and running AI models.
-            \item \textbf{Development Tools}: Python development environment, LangChain, Docker, Kubernetes and other necessary libraries.
-        \end{itemize}
-        \item \textbf{Financial Resources}
-        %Kosten von Azure raussuchen und hier schreiben
-        \begin{itemize}
-            \item \textbf{API Usage Costs}: Budget for the usage of GPT-4 and DALL-E APIs provided by Azure.
-            \item \textbf{Cloud Services Costs}: Budget for Azure cloud services, including storage, computing, and data transfer. For this early PoC those costs can be ignored, because the project runs locally.
-            \item \textbf{Operational Costs}: Costs associated with development, testing, deployment, and monitoring activities. For this early PoC those costs can be also ignored.
-        \end{itemize}
-    \end{enumerate}
+            \begin{enumerate}
+                \item \textbf{Human Resources}
+                \begin{itemize}
+                    \item \textbf{Project Lead (author)}: Responsible for overseeing the entire PoC, including planning, development, testing, and deployment.
+                \end{itemize}
+                \item \textbf{Technical Resources}
+                \begin{itemize}
+                    \item \textbf{Computing Infrastructure}: Azure cloud services for hosting and running AI models.
+                    \item \textbf{Development Tools}: Python development environment, LangChain, Docker, Kubernetes and other necessary libraries.
+                \end{itemize}
+                \item \textbf{Financial Resources}
+                %Kosten von Azure raussuchen und hier schreiben
+                \begin{itemize}
+                    \item \textbf{API Usage Costs}: Budget for the usage of GPT-4 and DALL-E APIs provided by Azure.
+                    \item \textbf{Cloud Services Costs}: Budget for Azure cloud services, including storage, computing, and data transfer. For this early PoC those costs can be ignored, because the project runs locally.
+                    \item \textbf{Operational Costs}: Costs associated with development, testing, deployment, and monitoring activities. For this early PoC those costs can be also ignored.
+                \end{itemize}
+            \end{enumerate}
 
-    % Zahlen Daten Fakten? Was kostet wie viel?
+            % Zahlen Daten Fakten? Was kostet wie viel?
 
-    %Project progress:
-    %\begin{itemize}
-    %    \item How did you implement AI methodologies and tools in your project?
-    %    \item Which prompts did you use?
-    %    \item How did you develop, organize, and fine-tune your prompts?
-    %    \item How did you implement the usage of prompts in your project field?
-    %    \item What processes did you implement in your project for the integration of AI into your project area?
-    %   \item Actual Stakeholder, risk, or ethical analysis, if applicable
-    %\end{itemize}
+            %Project progress:
+            %\begin{itemize}
+            %    \item How did you implement AI methodologies and tools in your project?
+            %    \item Which prompts did you use?
+            %    \item How did you develop, organize, and fine-tune your prompts?
+            %    \item How did you implement the usage of prompts in your project field?
+            %    \item What processes did you implement in your project for the integration of AI into your project area?
+            %   \item Actual Stakeholder, risk, or ethical analysis, if applicable
+            %\end{itemize}
 
     \section{Project Progress}
 
-    The project has progressed through several stages, implementing AI methodologies and tools systematically to ensure effective integration and functionality. 
-    This section details the steps taken, the development and organization of prompts, and the processes implemented for AI integration.
+        The project has progressed through several stages, implementing AI methodologies and tools systematically to ensure effective integration and functionality. 
+        This section details the steps taken, the development and organization of prompts, and the processes implemented for AI integration.
 
-    \subsection{Implementation of AI Methodologies and Tools}
+        \subsection{Implementation of AI Methodologies and Tools}
 
-    To integrate AI methodologies and tools, several steps were taken to ensure a robust and effective implementation. 
-    First, the environment was set up by configuring the development environment with Python and the necessary libraries. 
-    This included integrating Azure's API to access GPT-4 and DALL-E, providing the foundational tools needed for AI-driven content generation.
+            To integrate AI methodologies and tools, several steps were taken to ensure a robust and effective implementation. 
+            First, the environment was set up by configuring the development environment with Python and the necessary libraries. 
+            This included integrating Azure's API to access GPT-4 and DALL-E, providing the foundational tools needed for AI-driven content generation.
 
-    The development phase involved the creation of Python scripts to interact with GPT-4 and DALL-E via the Azure API. 
-    With the LangChain framework as foundation, the basic core functions were handled efficiently and also keeps the option open to switch to other generative models at a later time. 
-    These scripts implemented functions to generate both text and image content based on user data, enabling the creation of personalized and engaging content for the project.
-    
-    Finally, testing and validation were critical to ensure the system's accuracy and relevance. 
-    Basic unit tests were conducted to verify the correctness of the generated content. 
-    Additionally, the outputs were validated with sample user profiles to ensure that the personalization was effective and met the project's goals. 
-    This thorough testing phase ensured that the AI-generated content was both accurate and relevant, enhancing the overall user experience.
+            The development phase involved the creation of Python scripts to interact with GPT-4 and DALL-E via the Azure API. 
+            With the LangChain framework as foundation, the basic core functions were handled efficiently and also keeps the option open to switch to other generative models at a later time. 
+            These scripts implemented functions to generate both text and image content based on user data, enabling the creation of personalized and engaging content for the project.
+            
+            Finally, testing and validation were critical to ensure the system's accuracy and relevance. 
+            Basic unit tests were conducted to verify the correctness of the generated content. 
+            Additionally, the outputs were validated with sample user profiles to ensure that the personalization was effective and met the project's goals. 
+            This thorough testing phase ensured that the AI-generated content was both accurate and relevant, enhancing the overall user experience.
 
-    % Code auf Funktion getestet. 
-    % To-Dos:
-    % Mehr auf Use-Case abstimmen. Embeddings (Produktdatenblätter) einbauen
-    % Caption dann auch wieder um "with Product Datasheet PDFs" erweitern
+            % Code auf Funktion getestet. 
+            % To-Dos:
+            % Mehr auf Use-Case abstimmen. Embeddings (Produktdatenblätter) einbauen
+            % Caption dann auch wieder um "with Product Datasheet PDFs" erweitern
 
-    % In Erwägung ziehen Code in Anhang zu packen und dann einfach drauf zu verweisen
-    % Im Text dann auf Schnipsel des Codes eingehen
-    % Dieser Code wird am Ende nur ein Modul einer bereits bestehenden Code-Base sein, auf die nicht weiter eingegangen wird
+            % In Erwägung ziehen Code in Anhang zu packen und dann einfach drauf zu verweisen
+            % Im Text dann auf Schnipsel des Codes eingehen
+            % Dieser Code wird am Ende nur ein Modul einer bereits bestehenden Code-Base sein, auf die nicht weiter eingegangen wird
 
-    \begin{lstlisting}[language=Python, gobble=8, caption=LangChain Exampl]
-        #!/usr/bin/env python3
-        import os
-        import dotenv
-        import langchain
+            \begin{lstlisting}[language=Python, gobble=16, caption=LangChain Example]
+                #!/usr/bin/env python3
+                import os
+                import dotenv
+                import langchain
+                
+                from langchain_core.prompts import ChatPromptTemplate
+                from langchain_core.output_parsers import StrOutputParser
+                from langchain_core.runnables import RunnablePassthrough
+                from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+
+                dotenv.load_dotenv()
+
+                # Langchain flags 
+                langchain.verbose = False
+                langchain.debug = False
+                langchain.llm_cache = False
+
+                class LangChainChat:
+                    def __init__(self) -> None:
+                        # Set up Azure OpenAI client
+                        self.llm = AzureChatOpenAI(
+                        openai_api_key=os.getenv('LLM_API_KEY'),
+                        azure_endpoint=os.getenv('LLM_ENDPOINT'),
+                        openai_api_version=os.getenv('LLM_VERSION'),
+                        deployment_name=os.getenv('LLM_DEPLOYMENT_NAME')
+                        )
+
+                        # Parameters for the language model
+                        self.llm.temperature=0.5
+                        self.llm.max_tokens=100
+
+                    def chat_bot(self, template: str, question : str) -> str:
+
+                        prompt = ChatPromptTemplate.from_template(template)
+                    
+                        chain = (
+                            {
+                                "question": RunnablePassthrough()
+                            }
+                            | prompt
+                            | self.llm
+                            | StrOutputParser()
+                        )
+                    
+                        print("Send request to the language model...")
+                    
+                        response = chain.invoke(question)
+                    
+                        print(f"Question: {question}")
+                        print(f"Response: {response}")
+
+                        return response
+
+                def main() -> None:
+                    template : str = """
+                    You are an highly personalized marketing assistant and answers questions to our product.
+
+                    Question: {question}
+                    """
+                
+                    question : str = "Generate a detailed product description about ..."
+                
+                    chat = LangChainChat()
+                    chat.chat_bot(template, question)
+                    
+            \end{lstlisting}
         
-        from langchain_core.prompts import ChatPromptTemplate
-        from langchain_core.output_parsers import StrOutputParser
-        from langchain_core.runnables import RunnablePassthrough
-        from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 
-        dotenv.load_dotenv()
+        \subsection{Prompts Used}
 
-        # Langchain flags 
-        langchain.verbose = False
-        langchain.debug = False
-        langchain.llm_cache = False
+            The success of the generative AI models heavily relies on well-crafted prompts. 
+            The prompts used in the project were designed to generate personalized and contextually relevant content:
 
-        class LangChainChat:
-            def __init__(self) -> None:
-                # Set up Azure OpenAI client
-                self.llm = AzureChatOpenAI(
-                openai_api_key=os.getenv('LLM_API_KEY'),
-                azure_endpoint=os.getenv('LLM_ENDPOINT'),
-                openai_api_version=os.getenv('LLM_VERSION'),
-                deployment_name=os.getenv('LLM_DEPLOYMENT_NAME')
-                )
+            % To-Do:
+            % Prompts vollständig überarbeiten!
+            % Sind so zu allgemein. Nach dem Code einfach hier übernehmen
 
-                # Parameters for the language model
-                self.llm.temperature=0.5
-                self.llm.max_tokens=100
+            \begin{itemize}
+                \item \textbf{Text Prompts for GPT-4}
+                \begin{itemize}
+                    \item Basic Product Description: "Generate a detailed product description for [product\_name] that highlights its features and benefits."
+                    \item Personalized Marketing Message: "Create a marketing message for [customer\_name] based on their interest in [product\_category]."
+                    \item Customer Inquiry Response: "Generate a response to a customer's inquiry about [product\_feature] in [product\_name]."
+                \end{itemize}
+                \item \textbf{Image Prompts for DALL-E}
+                \begin{itemize}
+                    \item Product Image: "Create an image of [product\_name] with a focus on its main features."
+                    \item Personalized Visual Content: "Generate an image that appeals to [customer\_name]'s interest in [product\_category]."
+                \end{itemize}
+            \end{itemize}
 
-            def chat_bot(self, template: str, question : str) -> str:
+        \subsection{Development, Organization, and Fine-Tuning of Prompts}
 
-                prompt = ChatPromptTemplate.from_template(template)
+
+            The development, organization, and fine-tuning of prompts involved several structured steps. 
+            The process began with Initial Drafting, where initial versions of text and image prompts were created based on common use cases. 
+            These prompts were carefully reviewed for clarity and context relevance to ensure they would be effective in real-world applications.
             
-                chain = (
-                    {
-                        "question": RunnablePassthrough()
-                    }
-                    | prompt
-                    | self.llm
-                    | StrOutputParser()
-                )
+            Next, the prompts underwent Testing and Feedback. 
+            During this phase, the prompts were tested with the AI models, and the generated content was reviewed. 
+            Feedback on the quality and relevance of the outputs was collected, providing valuable insights into how well the prompts were performing.
             
-                print("Send request to the language model...")
+            Following the feedback, Iteration and Improvement took place. 
+            The prompts were refined based on the collected feedback and test results. 
+            Specific details and contextual information were added to improve the accuracy and effectiveness of the prompts. 
+            This iterative process ensured that the prompts were continuously enhanced to meet the project's requirements.
             
-                response = chain.invoke(question)
+            Finally, the prompts reached the Finalization stage. 
+            At this point, the prompts were organized into a structured format for easy access and modification. 
+            Comprehensive documentation was created, detailing the prompts and their intended use cases. 
+            This documentation served as a reference for future use and modification, ensuring that the prompts could be effectively utilized and adapted as needed.
+
+            %To-Do: Überlegen, ob man die endgültigen Prompts in diesem Kapitel dann nennt und ob die "Basis"-Prompts
+
+
+        \subsection{Implementation of Prompts in the Project Field}
+
+            %To-Do: Stärker Bezug auf das Batch-Verfahren nehmen
+
+            The usage of prompts was integrated into the project field through a series of processes. 
+            First, Automated Content Generation was implemented, where scripts were developed to automatically generate personalized product descriptions and marketing messages based on user data. 
+            This automation ensured that content creation was both efficient and tailored to individual user preferences.
             
-                print(f"Question: {question}")
-                print(f"Response: {response}")
-
-                return response
-
-        def main() -> None:
-            template : str = """
-            You are an highly personalized marketing assistant and answers questions to our product.
-
-            Question: {question}
-            """
-        
-            question : str = "Generate a detailed product description about ..."
-        
-            chat = LangChainChat()
-            chat.chat_bot(template, question)
+            Second, Dynamic Content Delivery was achieved by integrating AI-generated content into web pages and email templates dynamically. 
+            This integration allowed for real-time content updates based on user interactions and preferences, ensuring that users received the most relevant and up-to-date information.
             
-    \end{lstlisting}
-    
+            Lastly, Continuous Improvement was a key aspect of the project. 
+            % To-Do?: Zeitform evtl. auf Zukunft umschwenken hier. Jetzt noch PoC. In Zukunft dann so umsetzen
+            Feedback on the generated content was collected regularly, and this feedback was used to continuously refine and improve the prompts and models. 
+            By leveraging performance data, the AI systems were consistently enhanced to produce higher quality and more relevant content over time.
 
-    \subsection{Prompts Used}
+        \subsection{Processes for AI Integration}
 
-    The success of the generative AI models heavily relies on well-crafted prompts. 
-    The prompts used in the project were designed to generate personalized and contextually relevant content:
+            %To-Do: Dieser erst Abschnitt passt nicht mehr zum Rest.
+            % Ersetzen und die Bereitstellung abstrakt halten.
 
-    % To-Do:
-    % Prompts vollständig überarbeiten!
-    % Sind so zu allgemein. Nach dem Code einfach hier übernehmen
+            Several processes were implemented to ensure smooth integration of AI into the project. 
+            First, Data Pipeline Integration was established, where data pipelines were created to feed customer data into the AI models. 
+            This step also involved ensuring secure and efficient data handling practices to maintain data integrity and privacy. 
+            Second, Content Management System (CMS) Integration was carried out, which involved integrating AI-generated content into the existing CMS for seamless delivery. 
+            This integration allowed for automated content updates based on AI outputs, ensuring that the content remains current and relevant.
 
-    \begin{itemize}
-        \item \textbf{Text Prompts for GPT-4}
-        \begin{itemize}
-            \item Basic Product Description: "Generate a detailed product description for [product\_name] that highlights its features and benefits."
-            \item Personalized Marketing Message: "Create a marketing message for [customer\_name] based on their interest in [product\_category]."
-            \item Customer Inquiry Response: "Generate a response to a customer's inquiry about [product\_feature] in [product\_name]."
-        \end{itemize}
-        \item \textbf{Image Prompts for DALL-E}
-        \begin{itemize}
-            \item Product Image: "Create an image of [product\_name] with a focus on its main features."
-            \item Personalized Visual Content: "Generate an image that appeals to [customer\_name]'s interest in [product\_category]."
-        \end{itemize}
-    \end{itemize}
+            %To-Do: Feedback Loop etc sollte auch 
 
-    \subsection{Development, Organization, and Fine-Tuning of Prompts}
+            In the future, a Monitoring and Feedback Loop will be implemented to track the performance of AI-generated content. 
+            This loop enabled the project to adapt and refine its AI systems based on real-world performance and user feedback, ensuring ongoing enhancement of the AI-generated content's quality and relevance.
 
+        \subsection{Stakeholder, Risk, and Ethical Analysis}
 
-    The development, organization, and fine-tuning of prompts involved several structured steps. 
-    The process began with Initial Drafting, where initial versions of text and image prompts were created based on common use cases. 
-    These prompts were carefully reviewed for clarity and context relevance to ensure they would be effective in real-world applications.
-    
-    Next, the prompts underwent Testing and Feedback. 
-    During this phase, the prompts were tested with the AI models, and the generated content was reviewed. 
-    Feedback on the quality and relevance of the outputs was collected, providing valuable insights into how well the prompts were performing.
-    
-    Following the feedback, Iteration and Improvement took place. 
-    The prompts were refined based on the collected feedback and test results. 
-    Specific details and contextual information were added to improve the accuracy and effectiveness of the prompts. 
-    This iterative process ensured that the prompts were continuously enhanced to meet the project's requirements.
-    
-    Finally, the prompts reached the Finalization stage. 
-    At this point, the prompts were organized into a structured format for easy access and modification. 
-    Comprehensive documentation was created, detailing the prompts and their intended use cases. 
-    This documentation served as a reference for future use and modification, ensuring that the prompts could be effectively utilized and adapted as needed.
+            %To-Do: Einfach nochmal gucken, ob man das ggf. nicht etwas theoretische formuliert. Ist schließlich noch nicht der Fall
 
-    %To-Do: Überlegen, ob man die endgültigen Prompts in diesem Kapitel dann nennt und ob die "Basis"-Prompts
+            %\textbf{Stakeholders}
+            The stakeholders involved in the project include the Project Lead, End Users, and Technical Advisors. 
+            The Project Lead is responsible for the overall project execution and decision-making, ensuring that the project remains on track and meets its objectives. 
+            End Users are the beneficiaries of the personalized content, and their feedback is crucial for the continuous refinement and improvement of the system. 
+            Technical Advisors provide essential guidance on AI model implementation and integration, ensuring that the technical aspects of the project are sound and effective.
+
+            %\textbf{Risk Analysis}
+            Several risks were identified and analyzed to ensure the project's success. 
+            Technical Risks include potential issues with AI model performance or API integration, which could affect the system's ability to generate accurate and relevant content. 
+            Data Privacy Risks involve ensuring the secure handling of user data to comply with privacy regulations, a critical aspect of maintaining user trust and meeting legal requirements. 
+            Operational Risks pertain to challenges in maintaining and updating the system over time, which could impact the project's long-term sustainability and effectiveness.
 
 
-    \subsection{Implementation of Prompts in the Project Field}
+            %\textbf{Ethical Analysis}
+            The ethical implications of integrating AI into personalized marketing were carefully considered. 
+            Bias in AI Models is a significant concern, as it is essential to ensure that the AI-generated content does not reinforce biases or stereotypes. 
+            Transparency is also crucial, making users aware that the content is AI-generated and ensuring clarity in communication to maintain trust. 
+            Additionally, User Consent is vital, requiring clear communication and obtaining consent for data usage and personalization efforts to respect user autonomy and privacy.
 
-    %To-Do: Stärker Bezug auf das Batch-Verfahren nehmen
-
-    The usage of prompts was integrated into the project field through a series of processes. 
-    First, Automated Content Generation was implemented, where scripts were developed to automatically generate personalized product descriptions and marketing messages based on user data. 
-    This automation ensured that content creation was both efficient and tailored to individual user preferences.
-    
-    Second, Dynamic Content Delivery was achieved by integrating AI-generated content into web pages and email templates dynamically. 
-    This integration allowed for real-time content updates based on user interactions and preferences, ensuring that users received the most relevant and up-to-date information.
-    
-    Lastly, Continuous Improvement was a key aspect of the project. 
-    % To-Do?: Zeitform evtl. auf Zukunft umschwenken hier. Jetzt noch PoC. In Zukunft dann so umsetzen
-    Feedback on the generated content was collected regularly, and this feedback was used to continuously refine and improve the prompts and models. 
-    By leveraging performance data, the AI systems were consistently enhanced to produce higher quality and more relevant content over time.
-
-    \subsection{Processes for AI Integration}
-
-    %To-Do: Dieser erst Abschnitt passt nicht mehr zum Rest.
-    % Ersetzen und die Bereitstellung abstrakt halten.
-
-    Several processes were implemented to ensure smooth integration of AI into the project. 
-    First, Data Pipeline Integration was established, where data pipelines were created to feed customer data into the AI models. 
-    This step also involved ensuring secure and efficient data handling practices to maintain data integrity and privacy. 
-    Second, Content Management System (CMS) Integration was carried out, which involved integrating AI-generated content into the existing CMS for seamless delivery. 
-    This integration allowed for automated content updates based on AI outputs, ensuring that the content remains current and relevant.
-
-    %To-Do: Feedback Loop etc sollte auch 
-
-    In the future, a Monitoring and Feedback Loop will be implemented to track the performance of AI-generated content. 
-    This loop enabled the project to adapt and refine its AI systems based on real-world performance and user feedback, ensuring ongoing enhancement of the AI-generated content's quality and relevance.
-
-    \subsection{Stakeholder, Risk, and Ethical Analysis}
-
-    %To-Do: Einfach nochmal gucken, ob man das ggf. nicht etwas theoretische formuliert. Ist schließlich noch nicht der Fall
-
-    %\textbf{Stakeholders}
-    The stakeholders involved in the project include the Project Lead, End Users, and Technical Advisors. 
-    The Project Lead is responsible for the overall project execution and decision-making, ensuring that the project remains on track and meets its objectives. 
-    End Users are the beneficiaries of the personalized content, and their feedback is crucial for the continuous refinement and improvement of the system. 
-    Technical Advisors provide essential guidance on AI model implementation and integration, ensuring that the technical aspects of the project are sound and effective.
-
-    %\textbf{Risk Analysis}
-    Several risks were identified and analyzed to ensure the project's success. 
-    Technical Risks include potential issues with AI model performance or API integration, which could affect the system's ability to generate accurate and relevant content. 
-    Data Privacy Risks involve ensuring the secure handling of user data to comply with privacy regulations, a critical aspect of maintaining user trust and meeting legal requirements. 
-    Operational Risks pertain to challenges in maintaining and updating the system over time, which could impact the project's long-term sustainability and effectiveness.
-
-
-    %\textbf{Ethical Analysis}
-    The ethical implications of integrating AI into personalized marketing were carefully considered. 
-    Bias in AI Models is a significant concern, as it is essential to ensure that the AI-generated content does not reinforce biases or stereotypes. 
-    Transparency is also crucial, making users aware that the content is AI-generated and ensuring clarity in communication to maintain trust. 
-    Additionally, User Consent is vital, requiring clear communication and obtaining consent for data usage and personalization efforts to respect user autonomy and privacy.
-
-    By addressing these areas, the project aims to deliver a robust and ethically sound PoC for hyper-personalized product pages.
+            By addressing these areas, the project aims to deliver a robust and ethically sound PoC for hyper-personalized product pages.
 
 
 \chapter{Achievement of objectives}
@@ -740,58 +740,58 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \section{Results Achieved}
 
-    The implementation of generative AI for hyper-personalized product pages yielded several key results. 
-    First, we successfully integrated GPT-4 and DALL-E APIs via Azure, allowing for the automated generation of personalized product descriptions and marketing messages. 
-    This setup also enabled the creation of visually appealing product images tailored to customer preferences, and facilitated the real-time delivery of personalized content on web pages and email templates.
+        The implementation of generative AI for hyper-personalized product pages yielded several key results. 
+        First, we successfully integrated GPT-4 and DALL-E APIs via Azure, allowing for the automated generation of personalized product descriptions and marketing messages. 
+        This setup also enabled the creation of visually appealing product images tailored to customer preferences, and facilitated the real-time delivery of personalized content on web pages and email templates.
 
     \section{Impacts and Changes Realized}
 
-    % To-Do:
-    % So schreiben, dass man sich das erhofft und vllt auch aus vergleichbaren Projekten kennt
-    % System noch nicht produktiv, also auch noch kein Outcome.
-    % Subkapitel überschriften ggf. auskommentieren
+        % To-Do:
+        % So schreiben, dass man sich das erhofft und vllt auch aus vergleichbaren Projekten kennt
+        % System noch nicht produktiv, also auch noch kein Outcome.
+        % Subkapitel überschriften ggf. auskommentieren
 
-    The introduction and implementation of generative AI brought significant impacts and measurable changes. 
-    Enhanced user engagement was evident as personalized content led to increased interaction and engagement with the product pages. 
-    This personalization contributed to improved conversion rates due to tailored marketing messages and product descriptions. 
-    Additionally, operational efficiency was achieved by automating content creation, reducing the time and effort required for manual content updates. 
-    Customer satisfaction also improved, with positive feedback regarding the relevance and quality of personalized content.
+        The introduction and implementation of generative AI brought significant impacts and measurable changes. 
+        Enhanced user engagement was evident as personalized content led to increased interaction and engagement with the product pages. 
+        This personalization contributed to improved conversion rates due to tailored marketing messages and product descriptions. 
+        Additionally, operational efficiency was achieved by automating content creation, reducing the time and effort required for manual content updates. 
+        Customer satisfaction also improved, with positive feedback regarding the relevance and quality of personalized content.
 
     \section{Alignment with Project Goals}
 
-    The results of the AI integration aligned well with the initial goals of the project. 
-    The project successfully demonstrated the capability of generative AI to create hyper-personalized product pages. 
-    Moreover, unexpected outcomes included gaining additional insights into user preferences and behavior, which can be leveraged for future enhancements.
+        The results of the AI integration aligned well with the initial goals of the project. 
+        The project successfully demonstrated the capability of generative AI to create hyper-personalized product pages. 
+        Moreover, unexpected outcomes included gaining additional insights into user preferences and behavior, which can be leveraged for future enhancements.
 
     \section{Conclusions from AI Integration}
 
-    Several conclusions can be drawn from the integration of AI during the project. 
-    Generative AI can significantly enhance personalization in digital marketing. 
-    Automated processes reduce operational costs and increase efficiency. 
-    Furthermore, continuous monitoring and feedback loops are essential for maintaining content relevance and accuracy.
+        Several conclusions can be drawn from the integration of AI during the project. 
+        Generative AI can significantly enhance personalization in digital marketing. 
+        Automated processes reduce operational costs and increase efficiency. 
+        Furthermore, continuous monitoring and feedback loops are essential for maintaining content relevance and accuracy.
 
     \section{Sustainability of AI Usage}
 
-    To ensure the sustainable use of generative AI, several measures should be taken. 
-    First, establishing a robust infrastructure for AI deployment and monitoring is crucial. 
-    Regular updates to AI models and prompts based on user feedback and performance data are necessary. 
-    Additionally, providing training and support for team members to manage and optimize AI tools will help maintain effective AI usage.
+        To ensure the sustainable use of generative AI, several measures should be taken. 
+        First, establishing a robust infrastructure for AI deployment and monitoring is crucial. 
+        Regular updates to AI models and prompts based on user feedback and performance data are necessary. 
+        Additionally, providing training and support for team members to manage and optimize AI tools will help maintain effective AI usage.
 
-    % Evtl noch schreiben, dass man in Zukunft in Erwägung ziehen könnte ein Offline-Modell zu nutzen, zwecks Datenschutz etc.
+        % Evtl noch schreiben, dass man in Zukunft in Erwägung ziehen könnte ein Offline-Modell zu nutzen, zwecks Datenschutz etc.
 
     \section{Areas for Improvement}
 
-    While the PoC was successful, there are areas for improvement in the implementation of AI. 
-    Ensuring higher quality and more diverse data inputs can improve AI model performance. 
-    Further tuning of AI models can enhance the accuracy and relevance of generated content. 
-    Enhancing the user interface to provide clearer feedback and control over personalized content is also important.
+        While the PoC was successful, there are areas for improvement in the implementation of AI. 
+        Ensuring higher quality and more diverse data inputs can improve AI model performance. 
+        Further tuning of AI models can enhance the accuracy and relevance of generated content. 
+        Enhancing the user interface to provide clearer feedback and control over personalized content is also important.
 
     \section{Continuous Improvements}
 
-    To implement continuous improvements, several changes are recommended. 
-    Implementing robust feedback mechanisms to gather user insights and preferences is essential. 
-    Adopting an iterative development approach will allow for continuous refinement and enhancement of AI models and processes. 
-    Additionally, planning for scalability to handle increasing volumes of data and user interactions as the system grows will ensure the project can sustain and expand the benefits of generative AI integration, leading to ongoing enhancements in personalization and user engagement.
+        To implement continuous improvements, several changes are recommended. 
+        Implementing robust feedback mechanisms to gather user insights and preferences is essential. 
+        Adopting an iterative development approach will allow for continuous refinement and enhancement of AI models and processes. 
+        Additionally, planning for scalability to handle increasing volumes of data and user interactions as the system grows will ensure the project can sustain and expand the benefits of generative AI integration, leading to ongoing enhancements in personalization and user engagement.
 
 
 \chapter{Conclusion}
