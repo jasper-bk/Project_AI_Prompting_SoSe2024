@@ -333,13 +333,17 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
    % Which generative AI methodologies and tools did you select and why?
    % Why did you opt for this AI approach?
 
+    % To-Do: Hervorheben, dass es ein PoC ist und noch nicht produktiv ist
+    % Bezug zur Aufgabenstellung nochmal sichtbar herstellen: Wie werden Prozesse, Worklfows oder Organtisationen vereinfacht oder angereichert mit GenAI.
+
     In today's digital era, hyper-personalization becomes a central role in marketing and customer engagement. 
     The goal of this project is to develop and implement hyper-personalized product pages for websites, emails, and other communication channels.
     These pages are designed to present content tailored to individual customer preferences and behaviors, enhancing the user experience and increasing conversion rates.
 
     % What was/were the goal/goals of your AI project?
     % Goals of the AI Project
-    The primary goal of the project is to optimize customer engagement by creating personalized content in real-time. 
+    The primary goal of this AI project is to implement a proof of concept (PoC) which leverages generative AI to simplify and enrich processes and workflows by generating hyper-personalized product pages for websites, emails, and other channels.
+    Hyper-personalized content aims to enhance user engagement and operational efficiency. 
     By leveraging generative AI, product pages will be dynamically and individually customized for each user. 
     This will not only increase the relevance of the content but also improve the efficiency and effectiveness of marketing efforts.
 
@@ -356,7 +360,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     % Which AI approach did you wanted to integrate?
     % AI Approach Integration
 
-    For this project, the currently most advanced models such as GPT-4 for language and DALL-E for images will be used.
+    The project and PoC which this project report is about will use the most advanced models currently available, such as GPT-4 for text and DALL-E for images.
     These models are capable of generating both personalized texts and visual content tailored to the specific needs and preferences of users.
     
     % What preparatory actions did you take beforehand?
@@ -401,7 +405,6 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \section{Project Structure}
 
-        % Klären, ob sich das noch Proof of Concept schimpfen kann, wenn es doch mehrere Wochen lang dauern soll.
         The implementation of the first Proof of concept hyper-personalized product pages project is structured into several key phases to ensure systematic progress and effective integration of generative AI technologies. 
         The project structure can be broken down as follows:
 
@@ -446,39 +449,43 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             To ensure that the project remains on schedule and deadlines are met, a simple but sufficiently detailed schedule was drawn up for the PoC nature of the project. 
             The following Gantt chart highlights the key milestones and deliverables over the course of the project:
 
-            \begin{ganttchart}[
-                hgrid,
-                vgrid,
-                x unit=3cm,
-                y unit title=1cm,
-                y unit chart=1cm,
-                title height=1,
-                title/.style={fill=none},
-                title label font=\footnotesize,
-                bar/.style={fill=blue!50},
-                bar height=0.7,
-                group right shift=0,
-                group top shift=0.7,
-                group height=.3,
-                group peaks width={0.2},
-                inline]{1}{6}
-            \gantttitle{Project Timeline}{6} \\
+            \begin{figure}[H] 
+                \begin{ganttchart}[
+                    hgrid,
+                    vgrid,
+                    x unit=3cm,
+                    y unit title=1cm,
+                    y unit chart=1cm,
+                    title height=1,
+                    title/.style={fill=none},
+                    title label font=\footnotesize,
+                    bar/.style={fill=blue!50},
+                    bar height=0.7,
+                    group right shift=0,
+                    group top shift=0.7,
+                    group height=.3,
+                    group peaks width={0.2},
+                    inline]{1}{6}
+                \gantttitle{Project Timeline}{6} \\
 
-            \gantttitle{Week 1}{1}
-            \gantttitle{Week 2}{1}
-            \gantttitle{Week 3}{1}
-            \gantttitle{Week 4}{1}
-            \gantttitle{Week 5}{1}
-            \gantttitle{Week 6}{1} \\
-            
-            \ganttbar[bar inline label node/.style={anchor=west},bar inline label anchor=west]{Initial Planning and Requirements Gathering}{1}{1} \\
-            \ganttbar{Data Preparation}{2}{2} \\
-            \ganttbar{Model Integration and Development}{3}{3} \\
-            \ganttbar{System Integration and Testing}{4}{4} \\
-            \ganttbar{Deployment and Monitoring}{5}{5} \\
-            \ganttbar{Review and Optimization}{6}{6}     
-            \end{ganttchart}
-            % To-Do: Caption hinzufügen und in List of Figures aufnehmen 
+                \gantttitle{Week 1}{1}
+                \gantttitle{Week 2}{1}
+                \gantttitle{Week 3}{1}
+                \gantttitle{Week 4}{1}
+                \gantttitle{Week 5}{1}
+                \gantttitle{Week 6}{1} \\
+                
+                \ganttbar[bar inline label node/.style={anchor=west},bar inline label anchor=west]{Initial Planning and Requirements Gathering}{1}{1} \\
+                \ganttbar{Data Preparation}{2}{2} \\
+                \ganttbar{Model Integration and Development}{3}{3} \\
+                \ganttbar{System Integration and Testing}{4}{4} \\
+                \ganttbar{Deployment and Monitoring}{5}{5} \\
+                \ganttbar{Review and Optimization}{6}{6}     
+                \end{ganttchart}
+                \vspace{-20pt}
+                \caption[Gantt chart of project scheduling]{Gantt chart of project scheduling}
+                \label{fig:concept}
+            \end{figure}
 
             One week has planned for every key phase.
             When a phase was completed and there was still time left over, the subsequent phase was prepared or the time was used for other purposes.
@@ -747,15 +754,14 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \section{Impacts and Changes Realized}
 
         % To-Do:
-        % So schreiben, dass man sich das erhofft und vllt auch aus vergleichbaren Projekten kennt
-        % System noch nicht produktiv, also auch noch kein Outcome.
-        % Subkapitel überschriften ggf. auskommentieren
+        % Überlegung: Subkapitel überschriften ggf. auskommentieren und Textübergänge verflüssigen
 
-        The introduction and implementation of generative AI brought significant impacts and measurable changes. 
-        Enhanced user engagement was evident as personalized content led to increased interaction and engagement with the product pages. 
-        This personalization contributed to improved conversion rates due to tailored marketing messages and product descriptions. 
-        Additionally, operational efficiency was achieved by automating content creation, reducing the time and effort required for manual content updates. 
-        Customer satisfaction also improved, with positive feedback regarding the relevance and quality of personalized content.
+        The introduction and implementation of generative AI as part of the PoC has shown promising potential for significant impacts and measurable changes. 
+        Although the system is not yet being used in production, it can definitely be expected that such highly personalized content will lead to more interaction and engagement on the product pages.
+        In addition, existing processes in marketing can be highly enriched and relieved in other areas by gradually replacing them if the system is successful and has a low error rate.
+        This personalization is expected to contribute to improved conversion rates through tailored marketing messages and product descriptions. 
+        Additionally, operational efficiency could be greatly enhanced by automating content creation, thereby reducing the time and effort required for manual content updates. 
+        Furthermore, customer satisfaction is anticipated to improve, with positive feedback regarding the relevance and quality of personalized content likely to follow once the system is fully operational.
 
     \section{Alignment with Project Goals}
 
@@ -777,7 +783,9 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         Regular updates to AI models and prompts based on user feedback and performance data are necessary. 
         Additionally, providing training and support for team members to manage and optimize AI tools will help maintain effective AI usage.
 
-        % Evtl noch schreiben, dass man in Zukunft in Erwägung ziehen könnte ein Offline-Modell zu nutzen, zwecks Datenschutz etc.
+        One additional future considerations could include deploying an offline model to enhance data privacy and security. 
+        This would allow local processing of data, reducing the risk of breaches and complying with data protection regulations. 
+
 
     \section{Areas for Improvement}
 
