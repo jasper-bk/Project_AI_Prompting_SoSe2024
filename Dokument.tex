@@ -333,7 +333,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
    % Which generative AI methodologies and tools did you select and why?
    % Why did you opt for this AI approach?
 
-    In today's digital era, hyper-personalization plays a central role in marketing and customer engagement. 
+    In today's digital era, hyper-personalization becomes a central role in marketing and customer engagement. 
     The goal of this project is to develop and implement hyper-personalized product pages for websites, emails, and other communication channels.
     These pages are designed to present content tailored to individual customer preferences and behaviors, enhancing the user experience and increasing conversion rates.
 
@@ -500,10 +500,11 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \item \textbf{Development Tools}: Python development environment, LangChain, Docker, Kubernetes and other necessary libraries.
         \end{itemize}
         \item \textbf{Financial Resources}
+        %Kosten von Azure raussuchen und hier schreiben
         \begin{itemize}
             \item \textbf{API Usage Costs}: Budget for the usage of GPT-4 and DALL-E APIs provided by Azure.
-            \item \textbf{Cloud Services Costs}: Budget for Azure cloud services, including storage, computing, and data transfer.
-            \item \textbf{Operational Costs}: Costs associated with development, testing, deployment, and monitoring activities.
+            \item \textbf{Cloud Services Costs}: Budget for Azure cloud services, including storage, computing, and data transfer. For this early PoC those costs can be ignored, because the project runs locally.
+            \item \textbf{Operational Costs}: Costs associated with development, testing, deployment, and monitoring activities. For this early PoC those costs can be also ignored.
         \end{itemize}
     \end{enumerate}
 
@@ -526,17 +527,16 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \subsection{Implementation of AI Methodologies and Tools}
 
-
     To integrate AI methodologies and tools, several steps were taken to ensure a robust and effective implementation. 
     First, the environment was set up by configuring the development environment with Python and the necessary libraries. 
     This included integrating Azure's API to access GPT-4 and DALL-E, providing the foundational tools needed for AI-driven content generation.
 
     The development phase involved the creation of Python scripts to interact with GPT-4 and DALL-E via the Azure API. 
-    Using the LangChain framework, basic functions were handled efficiently. 
+    With the LangChain framework as foundation, the basic core functions were handled efficiently and also keeps the option open to switch to other generative models at a later time. 
     These scripts implemented functions to generate both text and image content based on user data, enabling the creation of personalized and engaging content for the project.
     
     Finally, testing and validation were critical to ensure the system's accuracy and relevance. 
-    Unit tests were conducted to verify the correctness of the generated content. 
+    Basic unit tests were conducted to verify the correctness of the generated content. 
     Additionally, the outputs were validated with sample user profiles to ensure that the personalization was effective and met the project's goals. 
     This thorough testing phase ensured that the AI-generated content was both accurate and relevant, enhancing the overall user experience.
 
@@ -624,8 +624,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     The prompts used in the project were designed to generate personalized and contextually relevant content:
 
     % To-Do:
-    % Prompts überarbeiten!
-    % sind zu allgemein
+    % Prompts vollständig überarbeiten!
+    % Sind so zu allgemein. Nach dem Code einfach hier übernehmen
 
     \begin{itemize}
         \item \textbf{Text Prompts for GPT-4}
@@ -648,10 +648,12 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     The process began with Initial Drafting, where initial versions of text and image prompts were created based on common use cases. 
     These prompts were carefully reviewed for clarity and context relevance to ensure they would be effective in real-world applications.
     
-    Next, the prompts underwent Testing and Feedback. During this phase, the prompts were tested with the AI models, and the generated content was reviewed. 
+    Next, the prompts underwent Testing and Feedback. 
+    During this phase, the prompts were tested with the AI models, and the generated content was reviewed. 
     Feedback on the quality and relevance of the outputs was collected, providing valuable insights into how well the prompts were performing.
     
-    Following the feedback, Iteration and Improvement took place. The prompts were refined based on the collected feedback and test results. 
+    Following the feedback, Iteration and Improvement took place. 
+    The prompts were refined based on the collected feedback and test results. 
     Specific details and contextual information were added to improve the accuracy and effectiveness of the prompts. 
     This iterative process ensured that the prompts were continuously enhanced to meet the project's requirements.
     
@@ -660,9 +662,12 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     Comprehensive documentation was created, detailing the prompts and their intended use cases. 
     This documentation served as a reference for future use and modification, ensuring that the prompts could be effectively utilized and adapted as needed.
 
+    %To-Do: Überlegen, ob man die endgültigen Prompts in diesem Kapitel dann nennt und ob die "Basis"-Prompts
+
 
     \subsection{Implementation of Prompts in the Project Field}
 
+    %To-Do: Stärker Bezug auf das Batch-Verfahren nehmen
 
     The usage of prompts was integrated into the project field through a series of processes. 
     First, Automated Content Generation was implemented, where scripts were developed to automatically generate personalized product descriptions and marketing messages based on user data. 
@@ -672,10 +677,14 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     This integration allowed for real-time content updates based on user interactions and preferences, ensuring that users received the most relevant and up-to-date information.
     
     Lastly, Continuous Improvement was a key aspect of the project. 
-    User feedback on the generated content was collected regularly, and this feedback was used to continuously refine and improve the prompts and models. 
+    % To-Do?: Zeitform evtl. auf Zukunft umschwenken hier. Jetzt noch PoC. In Zukunft dann so umsetzen
+    Feedback on the generated content was collected regularly, and this feedback was used to continuously refine and improve the prompts and models. 
     By leveraging performance data, the AI systems were consistently enhanced to produce higher quality and more relevant content over time.
 
     \subsection{Processes for AI Integration}
+
+    %To-Do: Dieser erst Abschnitt passt nicht mehr zum Rest.
+    % Ersetzen und die Bereitstellung abstrakt halten.
 
     Several processes were implemented to ensure smooth integration of AI into the project. 
     First, Data Pipeline Integration was established, where data pipelines were created to feed customer data into the AI models. 
@@ -683,12 +692,14 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     Second, Content Management System (CMS) Integration was carried out, which involved integrating AI-generated content into the existing CMS for seamless delivery. 
     This integration allowed for automated content updates based on AI outputs, ensuring that the content remains current and relevant.
 
-    Finally, a Monitoring and Feedback Loop was implemented to track the performance of AI-generated content. 
-    Monitoring tools were employed to gather data on how the AI-generated content was performing, which was crucial for assessing its effectiveness. 
-    Additionally, a feedback loop was created to continuously improve the models and prompts. 
+    %To-Do: Feedback Loop etc sollte auch 
+
+    In the future, a Monitoring and Feedback Loop will be implemented to track the performance of AI-generated content. 
     This loop enabled the project to adapt and refine its AI systems based on real-world performance and user feedback, ensuring ongoing enhancement of the AI-generated content's quality and relevance.
 
     \subsection{Stakeholder, Risk, and Ethical Analysis}
+
+    %To-Do: Einfach nochmal gucken, ob man das ggf. nicht etwas theoretische formuliert. Ist schließlich noch nicht der Fall
 
     %\textbf{Stakeholders}
     The stakeholders involved in the project include the Project Lead, End Users, and Technical Advisors. 
@@ -766,9 +777,11 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     Regular updates to AI models and prompts based on user feedback and performance data are necessary. 
     Additionally, providing training and support for team members to manage and optimize AI tools will help maintain effective AI usage.
 
+    % Evtl noch schreiben, dass man in Zukunft in Erwägung ziehen könnte ein Offline-Modell zu nutzen, zwecks Datenschutz etc.
+
     \section{Areas for Improvement}
 
-    While the project was successful, there are areas for improvement in the implementation of AI. 
+    While the PoC was successful, there are areas for improvement in the implementation of AI. 
     Ensuring higher quality and more diverse data inputs can improve AI model performance. 
     Further tuning of AI models can enhance the accuracy and relevance of generated content. 
     Enhancing the user interface to provide clearer feedback and control over personalized content is also important.
@@ -834,7 +847,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
 % To-Dos:
 % Titelfolie nochaml überprüfen:
-    %Matrikelnummer richtig übersetzt?
+    % Matrikelnummer richtig übersetzt?
 % wegen Übersetzung und ob das so Okay ist auf Englisch
 % Inhalt vertexlichen und einige Überschriften der Unterkapitel ggf rausschmeißen
 % Grundgerüst und Snippets sinnvoll implementieren
