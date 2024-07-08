@@ -333,9 +333,6 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
    % Which generative AI methodologies and tools did you select and why?
    % Why did you opt for this AI approach?
 
-    % To-Do: Hervorheben, dass es ein PoC ist und noch nicht produktiv ist
-    % Bezug zur Aufgabenstellung nochmal sichtbar herstellen: Wie werden Prozesse, Worklfows oder Organtisationen vereinfacht oder angereichert mit GenAI.
-
     In today's digital era, hyper-personalization becomes a central role in marketing and customer engagement. 
     The goal of this project is to develop and implement hyper-personalized product pages for websites, emails, and other communication channels.
     These pages are designed to present content tailored to individual customer preferences and behaviors, enhancing the user experience and increasing conversion rates.
@@ -549,7 +546,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
             % Code auf Funktion getestet. 
             % To-Dos:
-            % Mehr auf Use-Case abstimmen. Embeddings (Produktdatenblätter) einbauen
+            % Code auf RAG umstellen und in Teilen erklären
             % Caption dann auch wieder um "with Product Datasheet PDFs" erweitern
 
             % In Erwägung ziehen Code in Anhang zu packen und dann einfach drauf zu verweisen
@@ -628,20 +625,73 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         \subsection{Prompts Used}
 
             The success of the generative AI models heavily relies on well-crafted prompts. 
-            The prompts used in the project were designed to generate personalized and contextually relevant content:
+            Templates are used for the prompts used in the project. 
+            They are designed in such a way that they only require relevant parameters in order to deliver results that are as uniform but personalized and contextually relevant as possible.
+
+            For this reason, a distinction is made between templates and requests for prompts.
+            Templates define the structure, the context and the scope.
+
+            The requests are much smaller and are built into the templates in order to then precisely define the target of the prompt.
+
+            First of all, the templates for text generation:
+
+            \begin{lstlisting}[language=Python, gobble=16, caption=Prompt template for text]
+                """
+                You are a helpful AI assistant who is very familiar with the provided context.
+                Use the following context to process the request.
+
+                Only process reqeuests that refer to the context and do not provide any other explicit information.
+
+                If you can not process the request, do NOT try to make up an answer, instead answer with:
+                `Error! Request can not be processed.`
+
+                <context>
+                {context}
+                </context>
+
+                Request: {request}
+                """
+            \end{lstlisting}
+
+            Followed by the templates for image prompt generation:
+
+            \begin{lstlisting}[language=Python, gobble=16, caption=Prompt template for images]
+                """
+                You are a helpful AI assistant that is very familiar with the given context and tries to personalize as much as possible.
+                You will try to incorporate as much information as possible and, if necessary, get creative.
+                Use the following context and the informations about the customer to process the request.
+            
+                Only process reqeuests that refer to the context and do not provide any other explicit information.
+            
+                If you can not process the request, do NOT try to make up an answer, instead start the answer with
+                `Error! Request can not be processed. Reason:` and provide a reason.
+            
+                <context>
+                {context}
+                </context>
+            
+                Customer infortmation: {customer_information}
+            
+                Request: {request}
+                """
+            \end{lstlisting}
 
             % To-Do:
             % Prompts vollständig überarbeiten!
             % Sind so zu allgemein. Nach dem Code einfach hier übernehmen
 
+            And after the templates follow the requests which finally precisely specify the prompt:
+
             \begin{itemize}
-                \item \textbf{Text Prompts for GPT-4}
+                \item \textbf{Text Prompt requests}
                 \begin{itemize}
-                    \item Basic Product Description: "Generate a detailed product description for [product\_name] that highlights its features and benefits."
-                    \item Personalized Marketing Message: "Create a marketing message for [customer\_name] based on their interest in [product\_category]."
-                    \item Customer Inquiry Response: "Generate a response to a customer's inquiry about [product\_feature] in [product\_name]."
+                    \item Basic Product Description: "Generate a product description customized to the customer about product the from the context that highlights its features and benefits."
+                    \item Personalized Marketing Message: "Create a marketing message for the customer based on their potential interest in the product category."
+                    \item Customer Inquiry Response: "Generate a response to a customer's inquiry about [product\_feature] in [product\_name]." %To-Do: noch anpassen
                 \end{itemize}
-                \item \textbf{Image Prompts for DALL-E}
+
+                %To-Do: Noch gänzlich testen und funktional machen
+                \item \textbf{Image Prompt requests}
                 \begin{itemize}
                     \item Product Image: "Create an image of [product\_name] with a focus on its main features."
                     \item Personalized Visual Content: "Generate an image that appeals to [customer\_name]'s interest in [product\_category]."
