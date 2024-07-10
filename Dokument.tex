@@ -581,7 +581,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \end{lstlisting}
 
             The essential components of the implementation have been shown with those code snippets.
-            To have more information about the actual implementation the full code can be found in the \textbf{\hyperref[sec:appendix]{appendix}} appendix.
+            To have more information about the actual implementation the full code can be found in the \textbf{\hyperref[sec:appendix:text-gen]{appendix}}.
 
             The snippets shown so far are only the text generating part.
             For the image generation part, the same foundation is used to generate an image prompt from natural text, which is passed on to a DallEAPIWrapper by the LangChain utilities.
@@ -589,8 +589,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             The core implementation is also very simple.
             First the instantiation takes place and then the call.
 
-            %To-Do: Ganzen code für Bild Generierung noch im Anhang einbinden
-            \begin{lstlisting}[language=Python, gobble=12, caption=Instantiating DALL-E with LangChain, firstnumber=43] 
+            \begin{lstlisting}[language=Python, gobble=12, caption=Instantiating DALL-E with LangChain, firstnumber=19] 
                 self.image_model = DallEAPIWrapper(
                     api_key = os.getenv('LLM_API_KEY'),
                     base_url = os.getenv('LLM_ENDPOINT')
@@ -600,13 +599,12 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             For the DALL-E invocation, as already mentioned, an image prompt is first created via the existing text generation part.
             The return of the function call is then a URL to the generated image, which can then be downloaded.
 
-            \begin{lstlisting}[language=Python, gobble=12, caption=Invoking DALL-E with LangChain, firstnumber=85] 
-                # Generation of image prompt
-                response = chain.invoke(image_desc)
-        
+            \begin{lstlisting}[language=Python, gobble=12, caption=Invoking DALL-E with LangChain, firstnumber=60] 
                 # Actual call to DALL-E
-                image_url = self.image_model.run(response)
+                image_url = self.image_model.run(text_gen_result)
             \end{lstlisting}
+
+            The full code for the image generation can be also found in the \textbf{\hyperref[sec:appendix:image-gen]{appendix}}.
 
             These scripts implemented functions to generate both text and image content based on user data, enabling the creation of personalized and engaging content for the project.
             
@@ -690,7 +688,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
                 \item \textbf{Image Prompt requests}
                 \begin{itemize}
                     \item Banner Image: "Create a banner about the product from the context with focus on its main reasons to buy."
-                    \item Personalized Visual Content: "Generate an image that appeals to the customer's interest in \{product\_category\}."
+                    \item Personalized Visual Content: "Generate an image that appeals to the customer's interest of the product category from the context."
                 \end{itemize}
             \end{itemize}
 
@@ -739,30 +737,23 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             This loop will enable the project to adapt and refine its AI systems based on real-world performance and user feedback, ensuring ongoing enhancement of the AI-generated content's quality and relevance.
             This iterative process will ensure that the system not only meets initial expectations but will also evolve to provide increasingly accurate and personalized content over time.
 
-        \subsection{Stakeholder, Risk, and Ethical Analysis} % bis hierhin gekommen
+        \subsection{Stakeholder, Risk, and Ethical Analysis}
 
-            %To-Do: Einfach nochmal gucken, ob man das ggf. nicht etwas theoretische formuliert. Ist schließlich noch nicht der Fall
+            In the context of this proof of concept (PoC), the theoretical stakeholders include the project lead, potential end users, and technical advisors. 
+            The project lead oversees the project execution and makes critical decisions, ensuring the PoC aligns with the overall strategic goals. 
+            Potential end users represent the target audience who will benefit from personalized content, and their feedback will be crucial for refining the PoC. 
+            Technical advisors provide guidance on the implementation and integration of AI models, ensuring the technical soundness of the PoC.
 
-            %\textbf{Stakeholders}
-            The stakeholders involved in the project include the Project Lead, End Users, and Technical Advisors. 
-            The Project Lead is responsible for the overall project execution and decision-making, ensuring that the project remains on track and meets its objectives. 
-            End Users are the beneficiaries of the personalized content, and their feedback is crucial for the continuous refinement and improvement of the system. 
-            Technical Advisors provide essential guidance on AI model implementation and integration, ensuring that the technical aspects of the project are sound and effective.
+            The PoC phase includes the identification and theoretical mitigation of several risks. 
+            Technical risks involve potential performance issues with the AI models or integration challenges with the Azure API, which are mitigated by thorough testing and validation. 
+            Data privacy risks emphasize the importance of secure handling of user data, addressed by following best practices in data security and privacy regulations even during the PoC stage. 
+            Operational risks concern future challenges in maintaining and updating the system over time, with the PoC exploring strategies for efficient system maintenance.
 
-            %\textbf{Risk Analysis}
-            Several risks were identified and analyzed to ensure the project's success. 
-            Technical Risks include potential issues with AI model performance or API integration, which could affect the system's ability to generate accurate and relevant content. 
-            Data Privacy Risks involve ensuring the secure handling of user data to comply with privacy regulations, a critical aspect of maintaining user trust and meeting legal requirements. 
-            Operational Risks pertain to challenges in maintaining and updating the system over time, which could impact the project's long-term sustainability and effectiveness.
+            Ethical considerations are integral, even at the PoC stage. 
+            It is essential to ensure that the AI-generated content does not reinforce biases or stereotypes, involving testing for and mitigating any identified biases. 
+            Transparency is another critical aspect, where users must be aware that the content is AI-generated, and clear communication strategies will be devised during the PoC. 
+            Obtaining theoretical user consent for data usage and personalization efforts is a priority, ensuring alignment with ethical standards and privacy laws.
 
-
-            %\textbf{Ethical Analysis}
-            The ethical implications of integrating AI into personalized marketing were carefully considered. 
-            Bias in AI Models is a significant concern, as it is essential to ensure that the AI-generated content does not reinforce biases or stereotypes. 
-            Transparency is also crucial, making users aware that the content is AI-generated and ensuring clarity in communication to maintain trust. 
-            Additionally, User Consent is vital, requiring clear communication and obtaining consent for data usage and personalization efforts to respect user autonomy and privacy.
-
-            By addressing these areas, the project aims to deliver a robust and ethically sound PoC for hyper-personalized product pages.
 
 
 \chapter{Achievement of objectives}
@@ -783,7 +774,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \section{Results Achieved}
 
         The implementation of generative AI for hyper-personalized product pages yielded several key results. 
-        First, we successfully integrated GPT-4 and DALL-E APIs via Azure, allowing for the automated generation of personalized product descriptions and marketing messages. 
+        First, we successfully integrated Microsoft Azures GPT-4 and DALL-E API services via LangChain, allowing for the automated generation of personalized product descriptions and marketing messages. 
         This setup also enabled the creation of visually appealing product images tailored to customer preferences, and facilitated the real-time delivery of personalized content on web pages and email templates.
 
     \section{Impacts and Changes Realized}
@@ -801,13 +792,13 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \section{Alignment with Project Goals}
 
         The results of the AI integration aligned well with the initial goals of the project. 
-        The project successfully demonstrated the capability of generative AI to create hyper-personalized product pages. 
+        The project successfully demonstrated the capability of generative AI to simplify and enrich processes and workflows by generating hyper-personalized product pages for websites, emails, and other channels.
         Moreover, unexpected outcomes included gaining additional insights into user preferences and behavior, which can be leveraged for future enhancements.
 
     \section{Conclusions from AI Integration}
 
         Several conclusions can be drawn from the integration of AI during the project. 
-        Generative AI can significantly enhance personalization in digital marketing. 
+        Generative AI can significantly enhance personalization in digital marketing and therefore simplify and enrich existing processes and workflows.
         Automated processes reduce operational costs and increase efficiency. 
         Furthermore, continuous monitoring and feedback loops are essential for maintaining content relevance and accuracy.
 
@@ -816,7 +807,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         To ensure the sustainable use of generative AI, several measures should be taken. 
         First, establishing a robust infrastructure for AI deployment and monitoring is crucial. 
         Regular updates to AI models and prompts based on user feedback and performance data are necessary. 
-        Additionally, providing training and support for team members to manage and optimize AI tools will help maintain effective AI usage.
+        Additionally, providing training, support and cooperation with marketing will help maintain effective AI usage.
 
         One additional future considerations could include deploying an offline model to enhance data privacy and security. 
         This would allow local processing of data, reducing the risk of breaches and complying with data protection regulations. 
@@ -846,12 +837,9 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     %    \item Ethical reflection.
     %\end{itemize}
 
-
-    %To-Do: Bezug zur Aufgabenstellung nochmal sichtbar herstellen: Wie werden Prozesse, Worklfows oder Organtisationen vereinfacht oder angereichert mit GenAI.
-    % Auch eine Brücke schlagen zur Einleitung und den Bezug zur Aufgabenstellung sichbarer machen.
-
     The implementation of generative AI for hyper-personalized product pages has demonstrated significant potential in enhancing user engagement and operational efficiency. 
     The project's success in automating content creation and delivering personalized experiences marks a critical step towards more intelligent and responsive digital marketing strategies. 
+    This aligns directly with the primary task of using generative AI systems to support and enrich processes, workflows, and organizational operations.
     Future goals include expanding the scope of personalization, integrating more data sources for richer user profiles, and continuously improving AI models to further enhance content relevance and accuracy.
     
     The AI approach employed in this project, utilizing GPT-4 and DALL-E, has proven effective in generating personalized text and visual content. 
@@ -869,8 +857,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     Maintaining transparency about the use of AI in content generation and being accountable for the decisions and outputs produced by AI systems is crucial. 
     Preserving user autonomy by providing clear options for users to control and customize their personalized experiences is also necessary.
     
-    In conclusion, the project has successfully demonstrated the potential of generative AI in creating hyper-personalized product pages, paving the way for future developments and improvements. 
-    By addressing the ethical implications and continuously refining AI methodologies and tools, the project can contribute to more engaging, efficient, and ethical digital marketing practices.
+    In conclusion, this proof of concept has successfully demonstrated the potential of generative AI in creating hyper-personalized product pages, paving the way for future developments and improvements. 
+    By focusing on the use of generative AI to support and enhance organizational processes and workflows, the project aligns with its primary objective and sets the stage for sustainable and impactful AI integration in the future.
     
     % Schluss ca. 10%
 
@@ -895,7 +883,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
 {\Large
 \begin{enumerate}[label=\Alph*.]
-    \item \hyperref[sec:appendix:code_example_text]{Full code of project base for text generation}
+    \item \hyperref[sec:appendix:text-gen]{Full code of project base for text generation}
+    \item \hyperref[sec:appendix:image-gen]{Full code of project base for image generation}
 \end{enumerate}
 }
 \pagebreak
@@ -904,8 +893,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 \newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
 
 \tocless\chapter{Full code of project base for text generation}
-
-%To-Do kurz vorm Abschluss: Code nochmal abgleichen mit echtem Code und den Schnipseln im Text
+\label{sec:appendix:text-gen}
 
     \begin{lstlisting}[language=Python, gobble=4, caption=Full code of project base for text generation]
     #!/usr/bin/env python3
@@ -975,10 +963,13 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             print("Request:   " + query)
             print("Answer: " + result)
             print()
+
             if len(docs) == 0 and result != "No answer found!":
                 print("No documents found. To get an answer, you can increase the 'score_threshold'. This will reduce the quality of the answer.")
     
             self.print_document_info(docs, score_threshold, open_in_pdf_viewer)
+
+            return result
     
         def load_pdf_into_vector_store(self, pdf_file: str) -> VectorStore:
             if os.path.exists("vectorstore.db"):
@@ -1073,13 +1064,110 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         
     \end{lstlisting}
 
+    \tocless\chapter{Full code of project base for image generation}
+    \label{sec:appendix:image-gen}
+    
+        \begin{lstlisting}[language=Python, gobble=4, caption=Full code of project base for image generation]
+            #!/usr/bin/env python3
+            
+            import os
+            import dotenv
+            import langchain
+            
+            # Including existing code for text generation
+            from generate_marketing_texts import LangChainRag
+            
+            from langchain.utilities.dalle_image_generator import DallEAPIWrapper
+            
+            dotenv.load_dotenv()
+                        
+            class LangChainImage:
+                def __init__(self) -> None:
+            
+                    self.text_gen = LangChainRag()
+            
+                    self.image_model = DallEAPIWrapper(
+                        api_key = os.getenv('LLM_API_KEY'),
+                        base_url = os.getenv('LLM_ENDPOINT')
+                        )
+            
+                def ask_for_image(self, file_path : str, customer_information : str, request : str) -> None:
+                        
+                    template : str = """
+                    You are an AI artist that is very familiar with image prompting, the given context and tries to personalize as much as possible.
+                    You will try to incorporate as much information as possible and, if necessary, get creative.
+                    Use the following context and the informations about the customer to create an image prompt.
+                
+                    Only process reqeuests that refer to the context and do not provide any other explicit information.
+                
+                    If you can not process the request, do NOT try to make up an answer, instead start the answer with
+                    `Error! Request can not be processed. Reason:` and provide a reason.
+                
+                    <context>
+                    {context}
+                    </context>
+                
+                    Customer infortmation: {customer_information}
+                
+                    Request: {request}
+                    """
+            
+                    print("Send request to the language model...")
+            
+                    result = self.text_gen.ask(path_to_file=file_path,
+                                template=template,
+                                query=request,
+                                customer_information=customer_information,
+                                score_threshold=0.7,
+                                k_top=3,
+                                open_in_pdf_viewer=False)
+
+                    if "Error! Request can not be processed. Reason:" in text_result:
+                        raise Exception("Error during text prompting:", text_result)
+            
+                    print(f"Image prompt: {result}")
+            
+                    # Actual call to DALL-E
+                    image_url = self.image_model.run(result)
+            
+                    print(f"URL to image: {image_url}")
+            
+                    return image_url
+            
+            
+            def demo() -> None:
+            
+                # path to product datasheet file which will be used for the context
+                product_datasheet_file = "./product_datasheet.pdf"
+            
+                customer_information : str = """
+                First name: Robert
+                Last name: House
+                Gender: male
+                Profession: CEO of RobCo Industries
+                Interests: AI, robotics, casino
+                """
+            
+                request_list : list[str] = [
+                    "Create a banner about the product from the context with focus on its main reasons to buy.",
+                    "Generate an image that appeals to the customer's interest of the product category from the context."
+                ]
+            
+                image_chat = LangChainImage()
+            
+                for request in request_list:
+                    image_chat.ask_for_image(product_datasheet_file, customer_information, request)
+            
+            if __name__ == "__main__":
+                demo()
+            
+        \end{lstlisting}
+
 % To-Dos:
 % Titelfolie nochaml überprüfen:
     % Matrikelnummer richtig übersetzt?
+    % Abstract nochmal überprüfen
 % wegen Übersetzung und ob das so Okay ist auf Englisch
-% Inhalt vertexlichen und einige Überschriften der Unterkapitel ggf rausschmeißen
-% Grundgerüst und Snippets sinnvoll implementieren
-% min eine Grafik zum Aufbau des Systems implementieren
 
 
 \end{document}
