@@ -226,7 +226,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         
         \begin{large} 
         \begin{center}
-        Matriculation number: \matrikelnr
+        Matriculation Number: \matrikelnr
         \end{center}
         \end{large} 
         
@@ -242,7 +242,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         
         \begin{large} 
         \begin{center}
-        is done in the course \enquote{\modul} \\
+        in the course \enquote{\modul} \\
         of the degree program \abschluss { }\studiengang
         \end{center}
         \end{large} 
@@ -276,7 +276,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     %Draft! Durchgehen und  überarbeiten!
     %%%%%%%%%%%%%%%%%%%%
 
-    This project explores the use of generative AI, specifically GPT-4 and DALL-E, to create hyper-personalized product pages for websites, emails, and other digital marketing channels. 
+    This project explores the use of generative AI, specifically GPT-4 and DALL-E-3, to create hyper-personalized product pages for websites, emails, and other digital marketing channels. 
     The objective was to automate the generation of personalized text and visual content to enhance user engagement, improve conversion rates, and increase operational efficiency. 
     The project involved integrating Azure's AI APIs into a Python development environment, crafting and refining prompts for content generation, and deploying the system for real-time content delivery.
 
@@ -357,7 +357,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     % Which AI approach did you wanted to integrate?
     % AI Approach Integration
 
-    The project and PoC which this project report is about will use the most advanced models currently available, such as GPT-4 for text and DALL-E for images.
+    The project and the PoC, which is the subject of this project report, will use one of the most advanced models currently available, being GPT-4 for text and DALL-E-3 for images.
     These models are capable of generating both personalized texts and visual content tailored to the specific needs and preferences of users.
     
     % What preparatory actions did you take beforehand?
@@ -371,19 +371,20 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     % Which generative AI methodologies and tools did you select and why?
     % Selection of Generative AI Methodologies and Tools
 
-    The choice fell on GPT-4 for text generation and DALL-E for creating visual content. 
+    The choice fell on GPT-4 for text generation and DALL-E-3 for creating visual content. 
     GPT-4 was selected because of its high language understanding and generation capabilities, allowing it to create contextually relevant and personalized texts. 
-    DALL-E was chosen for its ability to generate high-quality and creative images tailored to specific customer needs. 
-    These tools provide the necessary flexibility and performance to generate the desired personalized content.
+    DALL-E-3 was chosen for its ability to generate high-quality and creative images tailored to specific customer needs. 
+    In addition, both are available as an API service in Microsoft Azure, which is in the end the most crucial point.
+    The call of DALL-E-3 and GPT-4 via API offers the necessary flexibility and performance to generate the desired personalized content without needing complex computing infrastructure.
     
     % Why did you opt for this AI approach?
     % Reasons for Opting for This AI Approach
     The decision to use generative AI was based on several factors. 
     Firstly, this approach allows for large-scale content personalization without disproportionately increasing human effort. 
-    Secondly, advanced models like GPT-4 and DALL-E ensure high quality and relevance of generated content, which is crucial for successful hyper-personalization. 
+    Secondly, advanced models like GPT-4 and DALL-E-3 ensure high quality and relevance of generated content, which is crucial for successful hyper-personalization. 
     Additionally, these models offer high adaptability and can be easily integrated into existing systems and workflows.
 
-    By combining these technologies and approaches, the project aims to revolutionize the processes of creating and delivering personalized content, significantly enhancing the efficiency and effectiveness of marketing strategies.
+    By combining these technologies and approaches, the project aims to revolutionize the processes of creating and delivering personalized content, significantly enhancing the efficiency and effectiveness of marketing processes.
 
     % Evtl später noch im Umfang erweitern. Dafür den aktuellen Textabschnitt und die Frage als Grundlage für mehr Text nutzen. 
 
@@ -393,6 +394,11 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \newpage
 
 \chapter{Implementation of the AI Project} 
+
+    The implementation phase of this AI project involves a structured approach to integrate generative AI into the creation of hyper-personalized product pages. 
+    This section details the key steps and methodologies employed to achieve the project's objectives. 
+    It covers the project structure, significant dates and events, resource and cost planning, and the integration of AI methodologies and tools, including the use of Azure's API and the Python library LangChain. 
+    Each of these aspects played a crucial role in developing a proof of concept (PoC) that demonstrates the potential of generative AI to simplify and enrich processes and workflows of digital marketing.
 
     %Fragen zur Project structure plan
     %\begin{itemize}
@@ -419,7 +425,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \item \textbf{Model Integration and Development}
             \begin{itemize}
                 \item Set up the development environment and necessary tools.
-                \item Develop Python scripts to interact with GPT-4 and DALL-E using the framework LangChain and Azure's API.
+                \item Develop Python scripts to interact with GPT-4 and DALL-E-3 using the framework LangChain and Azure's API.
                 \item Implement and test to ensure proper functionality.
             \end{itemize}
             \item \textbf{System Integration and Testing}
@@ -427,13 +433,13 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
                 \item Integrate the generative AI models into the existing web and email systems.
                 \item Conduct comprehensive testing to ensure the accuracy and relevance of personalized content.
             \end{itemize}
-            \item \textbf{Deployment and Monitoring}
+            \item \textbf{Deployment and Monitoring (out of scope for this report)}
             \begin{itemize}
                 \item Deploy the system to a usable and close to production environment.
                 \item Implement monitoring and logging to track system performance and user engagement.
                 \item Continuously refine and improve the models based on feedback and performance data.
             \end{itemize}
-            \item \textbf{Review and Optimization}
+            \item \textbf{Review and Optimization (out of scope for this report)}
             \begin{itemize}
                 \item Analyze system performance and user feedback.
                 \item Optimize the models and processes to enhance personalization and efficiency.
@@ -487,6 +493,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             One week has planned for every key phase.
             When a phase was completed and there was still time left over, the subsequent phase was prepared or the time was used for other purposes.
             Strict adherence to the project schedule was and is not a given, as it primarily served as a guide and draft.
+            After the schedule has been completed, topics such as monitoring, verification and optimization will continue during productive operation.
+
 
         \subsection{Project Resources: Resource/Cost Planning}
 
@@ -504,9 +512,14 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
                     \item \textbf{Development Tools}: Python development environment, LangChain, Docker, Kubernetes and other necessary libraries.
                 \end{itemize}
                 \item \textbf{Financial Resources}
-                %Kosten von Azure raussuchen und hier schreiben
                 \begin{itemize}
-                    \item \textbf{API Usage Costs}: Budget for the usage of GPT-4 and DALL-E APIs provided by Azure.
+                    \item \textbf{API Usage Costs}: Budget for the usage of GPT-4 and DALL-E-3 APIs provided by Azure. 
+                    \begin{itemize}
+                        \item GPT-4: 0.029€ per 1000 Tokens 
+                        \item Dall-E-3: 3.745€ per 100 images
+                        \item Ada (for Embeddings): 0.000094€ per 1000 Tokens
+                    \end{itemize}
+                    (As of June 2024)(\cite[Vgl.][]{openai_azure_pricing})
                     \item \textbf{Cloud Services Costs}: Budget for Azure cloud services, including storage, computing, and data transfer. For this early PoC those costs can be ignored, because the project runs locally.
                     \item \textbf{Operational Costs}: Costs associated with development, testing, deployment, and monitoring activities. For this early PoC those costs can be also ignored.
                 \end{itemize}
@@ -533,9 +546,9 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
             To integrate AI methodologies and tools, several steps were taken to ensure a robust and effective implementation. 
             First, the environment was set up by configuring the development environment with Python and the necessary libraries. 
-            This included integrating Azure's API to access GPT-4 and DALL-E, providing the foundational tools needed for AI-driven content generation.
+            This included integrating Azure's API to access GPT-4 and DALL-E-3, providing the foundational tools needed for AI-driven content generation.
 
-            The development phase involved the creation of Python scripts to interact with GPT-4 and DALL-E via the Azure API. 
+            The development phase involved the creation of Python scripts to interact with GPT-4 and DALL-E-3 via the Azure API. 
             With the LangChain framework as foundation, the basic core functions were handled efficiently and also keeps the option open to switch to other generative models at a later time. 
 
             Instantiating GPT-4 with LangChain is done with the following code snippet.
@@ -585,6 +598,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
             The snippets shown so far are only the text generating part.
             For the image generation part, the same foundation is used to generate an image prompt from natural text, which is passed on to a DallEAPIWrapper by the LangChain utilities.
+            (\cite[Vgl.][]{langchain_dalle_wrapper})
 
             The core implementation is also very simple.
             First the instantiation takes place and then the call.
@@ -620,13 +634,13 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             The success of the generative AI models heavily relies on well-crafted prompts. 
             Templates are used for the prompts used in the project. 
             They are designed in such a way that they only require relevant parameters in order to deliver results that are as uniform but personalized and contextually relevant as possible.
+            (\cite[Vgl.][]{langchain_templates})
 
             For this reason, a distinction is made between templates and requests for prompts.
             Templates define the structure, the context and the scope.
-
             The requests are much smaller and are built into the templates in order to then precisely define the target of the prompt.
 
-            First of all, the templates for text generation:
+            First of all, the template for text generation:
 
             \begin{lstlisting}[language=Python, gobble=16, caption=Prompt template for text]
                 """
@@ -649,7 +663,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
                 """
             \end{lstlisting}
 
-            Followed by the templates for image prompt generation:
+            Followed by the template for image prompt generation:
 
             \begin{lstlisting}[language=Python, gobble=16, caption=Prompt template for images]
                 """
@@ -714,7 +728,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             This system operates on a batch processing schedule, periodically iterating over all current customer data stored in the Customer Data Warehouse systems. 
 
             Each batch process initiates by extracting relevant customer information from the Data Warehouses, ensuring that the most up-to-date data is used for content generation. 
-            The LangChain framework facilitates the interaction with Azure's GPT-4 and DALL-E APIs, generating personalized text and images tailored to individual user profiles. 
+            The LangChain framework facilitates the interaction with Azure's GPT-4 and DALL-E-3 APIs, generating personalized text and images tailored to individual user profiles. 
             These AI-generated contents include product descriptions, marketing messages, and visual elements, which are then seamlessly integrated into the corresponding product pages, emails, and other communication channels.
 
             The automation provided by this system not only simplifies the workflow by reducing the need for manual content creation but also enriches the user experience through highly personalized and relevant content. 
@@ -754,7 +768,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             Transparency is another critical aspect, where users must be aware that the content is AI-generated, and clear communication strategies will be devised during the PoC. 
             Obtaining theoretical user consent for data usage and personalization efforts is a priority, ensuring alignment with ethical standards and privacy laws.
 
-
+        \newpage
 
 \chapter{Achievement of objectives}
 
@@ -774,7 +788,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \section{Results Achieved}
 
         The implementation of generative AI for hyper-personalized product pages yielded several key results. 
-        First, we successfully integrated Microsoft Azures GPT-4 and DALL-E API services via LangChain, allowing for the automated generation of personalized product descriptions and marketing messages. 
+        First, we successfully integrated Microsoft Azures GPT-4 and DALL-E-3 API services via LangChain, allowing for the automated generation of personalized product descriptions and marketing messages. 
         This setup also enabled the creation of visually appealing product images tailored to customer preferences, and facilitated the real-time delivery of personalized content on web pages and email templates.
 
     \section{Impacts and Changes Realized}
@@ -827,6 +841,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         Adopting an iterative development approach will allow for continuous refinement and enhancement of AI models and processes. 
         Additionally, planning for scalability to handle increasing volumes of data and user interactions as the system grows will ensure the project can sustain and expand the benefits of generative AI integration, leading to ongoing enhancements in personalization and user engagement.
 
+    \newpage
 
 \chapter{Conclusion}
 
@@ -842,7 +857,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     This aligns directly with the primary task of using generative AI systems to support and enrich processes, workflows, and organizational operations.
     Future goals include expanding the scope of personalization, integrating more data sources for richer user profiles, and continuously improving AI models to further enhance content relevance and accuracy.
     
-    The AI approach employed in this project, utilizing GPT-4 and DALL-E, has proven effective in generating personalized text and visual content. 
+    The AI approach employed in this project, utilizing GPT-4 and DALL-E-3, has proven effective in generating personalized text and visual content. 
     Possible developments for this approach include combining text and image generation capabilities in more sophisticated ways to create even more cohesive and engaging content. 
     Additionally, improving the models' ability to understand and utilize context from user interactions can generate more relevant content. 
     Developing capabilities for real-time adaptation of content based on immediate user feedback and actions is also a key area for future development.
@@ -875,6 +890,8 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     \bibliographystyle{apacite} %Einträge sind unsortiert
     \bibliography{bibliographie.bib}
 \fi
+
+\cleardoublepage
 
 \appendix
 
