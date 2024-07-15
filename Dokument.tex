@@ -276,17 +276,21 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
     %Draft! Durchgehen und  überarbeiten!
     %%%%%%%%%%%%%%%%%%%%
 
-    This project explores the use of generative AI, specifically GPT-4 and DALL-E-3, to create hyper-personalized product pages for websites, emails, and other digital marketing channels. 
-    The objective was to automate the generation of personalized text and visual content to enhance user engagement, improve conversion rates, and increase operational efficiency. 
-    The project involved integrating Azure's AI APIs into a Python development environment, crafting and refining prompts for content generation, and deploying the system for real-time content delivery.
 
-    Key results included successful integration and automation, leading to significant improvements in user interaction and satisfaction. 
-    The project demonstrated that generative AI could effectively tailor marketing content to individual preferences, resulting in higher engagement and conversion rates. 
-    Ethical considerations, such as data privacy, bias, and transparency, were addressed to ensure responsible AI usage.
+    This project explores the use of generative AI systems to support and enhance processes, workflows, and organizational operations by implementing a proof of concept (PoC) for hyper-personalized product pages. 
+    The primary goal is to leverage generative AI, specifically GPT-4 and DALL-E-3 through Azure's API services, to automate content creation and deliver personalized user experiences across various digital platforms such as websites and emails. 
+    The project involves integrating AI-generated text and images into existing customer facing applications and systems, ensuring seamless and dynamic content updates based on user interactions.
 
-    Future goals involve expanding personalization capabilities, enhancing AI models' context awareness, and exploring integration with emerging technologies. 
-    Continuous improvements will focus on advanced data analytics, model enhancement, and maintaining ethical standards. 
-    The project concludes that generative AI offers substantial benefits for digital marketing, with potential for ongoing development and refinement.
+    Throughout the PoC, a structured approach was taken to set up the development environment, develop and test Python scripts, and refine prompts for optimal performance. 
+    LangChain was utilized to streamline the interaction with Azure's API, demonstrating the potential for more sophisticated AI applications in the future. 
+    Key stakeholders were identified, and a thorough risk and ethical analysis was conducted to address data privacy, bias, and transparency concerns.
+
+    The results of this PoC indicate significant potential for improved user engagement and operational efficiency. 
+    Personalized content leads to increased user interaction, higher conversion rates, and enhanced customer satisfaction. 
+    While these benefits are expected to fully materialize upon the system's deployment, the PoC provides a solid foundation for future advancements and integration of generative AI in digital marketing processes and workflows.
+
+    This project highlights the critical role of generative AI in simplifying and enriching organizational processes and workflows. 
+    By focusing on ethical considerations and continuous improvement, the project sets the stage for sustainable and impactful AI integration in the future.
 
 %%%%%
 
@@ -422,7 +426,7 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
                 \item Collect and preprocess customer data required for personalization.
                 \item Ensure data quality and consistency.
             \end{itemize}
-            \item \textbf{Model Integration and Development}
+            \item \textbf{Model Integration and Development (mainly the scope of this report)}
             \begin{itemize}
                 \item Set up the development environment and necessary tools.
                 \item Develop Python scripts to interact with GPT-4 and DALL-E-3 using the framework LangChain and Azure's API.
@@ -693,9 +697,9 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
             \begin{itemize}
                 \item \textbf{Text Prompt requests}
                 \begin{itemize}
-                    \item Basic Product Description: "Generate a product description customized to the customer about product the from the context that highlights its features and benefits."
-                    \item Personalized Marketing Message: "Create a marketing message for the customer based on their potential interest in the product category."
-                    \item Customer Inquiry Response: "Generate a response to a customer's inquiry about \{product\_feature\}."
+                    \item Basic Product Description: "Generate a product description customized to the customer about the product from the context that highlights its features and benefits."
+                    \item Personalized Marketing Message: "Create a marketing message for the customer based on the context and their potential interest in the product category."
+                    \item Customer Inquiry Response: "Generate a response to a customer's inquiry based on the context about \{product\_feature\}."
                 \end{itemize}
 
                 %To-Do: Noch gänzlich testen und funktional machen
@@ -832,12 +836,11 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
         While the PoC was successful, there are areas for improvement in the implementation of AI. 
         Ensuring higher quality and more diverse data inputs can improve AI model performance. 
         Further tuning of AI models can enhance the accuracy and relevance of generated content. 
-        Enhancing the user interface to provide clearer feedback and control over personalized content is also important.
+        Introducing a suitable user interface for the marketing team to provide clearer feedback and control over personalized content is also important.
 
     \section{Continuous Improvements}
 
-        To implement continuous improvements, several changes are recommended. 
-        Implementing robust feedback mechanisms to gather user insights and preferences is essential. 
+        Having a robust feedback mechanism to gather user insights and preferences will be essential for continuous improvements. 
         Adopting an iterative development approach will allow for continuous refinement and enhancement of AI models and processes. 
         Additionally, planning for scalability to handle increasing volumes of data and user interactions as the system grows will ensure the project can sustain and expand the benefits of generative AI integration, leading to ongoing enhancements in personalization and user engagement.
 
@@ -1083,102 +1086,102 @@ toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
 
     \tocless\chapter{Full code of project base for image generation}
     \label{sec:appendix:image-gen}
-    
-        \begin{lstlisting}[language=Python, gobble=4, caption=Full code of project base for image generation]
-            #!/usr/bin/env python3
-            
-            import os
-            import dotenv
-            import langchain
-            
-            # Including existing code for text generation
-            from generate_marketing_texts import LangChainRag
-            
-            from langchain.utilities.dalle_image_generator import DallEAPIWrapper
-            
-            dotenv.load_dotenv()
-                        
-            class LangChainImage:
-                def __init__(self) -> None:
-            
-                    self.text_gen = LangChainRag()
-            
-                    self.image_model = DallEAPIWrapper(
-                        api_key = os.getenv('LLM_API_KEY'),
-                        base_url = os.getenv('LLM_ENDPOINT')
-                        )
-            
-                def ask_for_image(self, file_path : str, customer_information : str, request : str) -> None:
-                        
-                    template : str = """
-                    You are an AI artist that is very familiar with image prompting, the given context and tries to personalize as much as possible.
-                    You will try to incorporate as much information as possible and, if necessary, get creative.
-                    Use the following context and the informations about the customer to create an image prompt.
-                
-                    Only process reqeuests that refer to the context and do not provide any other explicit information.
-                
-                    If you can not process the request, do NOT try to make up an answer, instead start the answer with
-                    `Error! Request can not be processed. Reason:` and provide a reason.
-                
-                    <context>
-                    {context}
-                    </context>
-                
-                    Customer infortmation: {customer_information}
-                
-                    Request: {request}
-                    """
-            
-                    print("Send request to the language model...")
-            
-                    result = self.text_gen.ask(path_to_file=file_path,
-                                template=template,
-                                query=request,
-                                customer_information=customer_information,
-                                score_threshold=0.7,
-                                k_top=3,
-                                open_in_pdf_viewer=False)
 
-                    if "Error! Request can not be processed. Reason:" in text_result:
-                        raise Exception("Error during text prompting:", text_result)
-            
-                    print(f"Image prompt: {result}")
-            
-                    # Actual call to DALL-E
-                    image_url = self.image_model.run(result)
-            
-                    print(f"URL to image: {image_url}")
-            
-                    return image_url
-            
-            
-            def demo() -> None:
-            
-                # path to product datasheet file which will be used for the context
-                product_datasheet_file = "./product_datasheet.pdf"
-            
-                customer_information : str = """
-                First name: Robert
-                Last name: House
-                Gender: male
-                Profession: CEO of RobCo Industries
-                Interests: AI, robotics, casino
-                """
-            
-                request_list : list[str] = [
-                    "Create a banner about the product from the context with focus on its main reasons to buy.",
-                    "Generate an image that appeals to the customer's interest of the product category from the context."
-                ]
-            
-                image_chat = LangChainImage()
-            
-                for request in request_list:
-                    image_chat.ask_for_image(product_datasheet_file, customer_information, request)
-            
-            if __name__ == "__main__":
-                demo()
-            
-        \end{lstlisting}
+    \begin{lstlisting}[language=Python, gobble=4, caption=Full code of project base for image generation]
+    #!/usr/bin/env python3
+    
+    import os
+    import dotenv
+    import langchain
+    
+    # Including existing code for text generation
+    from generate_marketing_texts import LangChainRag
+    
+    from langchain.utilities.dalle_image_generator import DallEAPIWrapper
+    
+    dotenv.load_dotenv()
+                
+    class LangChainImage:
+        def __init__(self) -> None:
+    
+            self.text_gen = LangChainRag()
+    
+            self.image_model = DallEAPIWrapper(
+                api_key = os.getenv('LLM_API_KEY'),
+                base_url = os.getenv('LLM_ENDPOINT')
+                )
+    
+        def ask_for_image(self, file_path : str, customer_information : str, request : str) -> None:
+                
+            template : str = """
+            You are an AI artist that is very familiar with image prompting, the given context and tries to personalize as much as possible.
+            You will try to incorporate as much information as possible and, if necessary, get creative.
+            Use the following context and the informations about the customer to create an image prompt.
+        
+            Only process reqeuests that refer to the context and do not provide any other explicit information.
+        
+            If you can not process the request, do NOT try to make up an answer, instead start the answer with
+            `Error! Request can not be processed. Reason:` and provide a reason.
+        
+            <context>
+            {context}
+            </context>
+        
+            Customer infortmation: {customer_information}
+        
+            Request: {request}
+            """
+    
+            print("Send request to the language model...")
+    
+            result = self.text_gen.ask(path_to_file=file_path,
+                        template=template,
+                        query=request,
+                        customer_information=customer_information,
+                        score_threshold=0.7,
+                        k_top=3,
+                        open_in_pdf_viewer=False)
+
+            if "Error! Request can not be processed. Reason:" in text_result:
+                raise Exception("Error during text prompting:", text_result)
+    
+            print(f"Image prompt: {result}")
+    
+            # Actual call to DALL-E
+            image_url = self.image_model.run(result)
+    
+            print(f"URL to image: {image_url}")
+    
+            return image_url
+    
+    
+    def demo() -> None:
+    
+        # path to product datasheet file which will be used for the context
+        product_datasheet_file = "./product_datasheet.pdf"
+    
+        customer_information : str = """
+        First name: Robert
+        Last name: House
+        Gender: male
+        Profession: CEO of RobCo Industries
+        Interests: AI, robotics, casino
+        """
+    
+        request_list : list[str] = [
+            "Create a banner about the product from the context with focus on its main reasons to buy.",
+            "Generate an image that appeals to the customer's interest of the product category from the context."
+        ]
+    
+        image_chat = LangChainImage()
+    
+        for request in request_list:
+            image_chat.ask_for_image(product_datasheet_file, customer_information, request)
+    
+    if __name__ == "__main__":
+        demo()
+        
+    \end{lstlisting}
 
 % To-Dos:
 % Titelfolie nochaml überprüfen:
